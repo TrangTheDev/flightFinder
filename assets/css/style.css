@@ -39,10 +39,29 @@ header h1{
 main {
     height: 100%;
     width: 60%;
+    display: flex;
+    flex-direction: column;
 }
 
 main table{
-    height: 70%;
+    border: 2px solid black;
+    height: 80%;
     width: 80%;
     margin: auto;
+}
+
+td {
+    text-align: center;
+}
+
+.carrier {
+    width: 15%;
+}
+
+.time {
+    width: 70%;
+}
+
+.price {
+    width: 15%;
 }
