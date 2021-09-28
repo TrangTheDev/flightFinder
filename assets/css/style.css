@@ -66,10 +66,28 @@ aside {
     display: flex;
     flex-direction: column;
     width: 80%;
-    height: 30%;
+    height: 50%;
     margin: 0 auto;
-    margin-top: 80%;
     justify-content: space-evenly;
+}
+
+.totalCost {
+    display: flex;
+    height: 80%;
+    /* margin: 0 auto; */
+    background-color: white;
+    border-radius: 20px;
+    border: 2px solid black;
+}
+
+.priceCalculator {
+    width: 100%;
+    margin: 5% auto;
+}
+
+.totalCost li {
+    width: 80%;
+    margin: 0 auto;
 }
 
 header {

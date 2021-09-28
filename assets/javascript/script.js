@@ -8,18 +8,6 @@
     $( "#fromDate" ).datepicker({ dateFormat: 'dd-mm-yy' });
   } );
 
-// calculator 
-var submitBtn = $('#calcSubmitBtn')
-submitBtn.on('click', calculateCosts)
-
-function calculateCosts() {
-    var flightCost = 500
-    var peopleValue = $('#people option:selected').val()
-
-    perPersonCost = (flightCost)/(peopleValue)
-    console.log(perPersonCost)
-}
-
 var $carrierList = $(".carrier");
 var $flightTimes = $(".time");
 var $priceList = $(".price");
@@ -55,13 +43,28 @@ fetch(request, {
   $flightTimes.append($takeOffTime);
 
   var $price = $("<p>");
-  $price.addClass = ("flight-price");
+  $price.addClass("flight-price");
   $price.text(data.Quotes[0].MinPrice);
   $priceList.append( $price);
 })
-
 
 $findButton.on("click", function(){
   console.log($fromCity.val());
   console.log($destination.val());
 })
+// calculator 
+var submitBtn = $('#calcSubmitBtn')
+submitBtn.on('click', calculateCosts)
+
+function calculateCosts() {
+  var flightCost = $('.flight-price').text()
+  var peopleValue = $('#people option:selected').val()
+  var $flightDivision = $('#flightDivision')
+  if (peopleValue != 0) {
+    var $perPersonFlightCost = (flightCost)/(peopleValue)
+    $flightDivision.text("Flight Cost Per Person= " + $perPersonFlightCost);
+  } else {
+    $flightDivision.text('Please Select The Amount Of People Going On This Trip')
+  }
+}
+ 
