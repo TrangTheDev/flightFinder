@@ -7,4 +7,15 @@
     $( "#fromDate" ).datepicker({ dateFormat: 'dd-mm-yy' });
   } );
 
-  
+// calculator 
+var submitBtn = $('#calcSubmitBtn')
+submitBtn.on('click', calculateCosts)
+
+function calculateCosts() {
+    var flightCost = 500
+    var peopleValue = $('#people option:selected').val()
+
+    perPersonCost = (flightCost)/(peopleValue)
+    console.log(perPersonCost)
+
+}
