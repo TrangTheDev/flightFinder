@@ -60,3 +60,4 @@ function calculateCosts() {
     $flightDivision.text('Please Select The Amount Of People Going On This Trip')
   }
 }
+ 
