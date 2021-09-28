@@ -17,5 +17,4 @@ function calculateCosts() {
 
     perPersonCost = (flightCost)/(peopleValue)
     console.log(perPersonCost)
-
 }
