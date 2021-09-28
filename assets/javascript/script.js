@@ -23,6 +23,9 @@ function calculateCosts() {
 var $carrierList = $(".carrier");
 var $flightTimes = $(".time");
 var $priceList = $(".price");
+var $destination = $("#toDestination");
+var $fromCity = $("#fromDestination");
+var $findButton = $(".button");
 
 //SkyScanner API
 var request = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/MAD-sky/DXB-sky/2021-11-20?inboundpartialdate=2019-12-01";
@@ -57,3 +60,8 @@ fetch(request, {
   $priceList.append( $price);
 })
 
+
+$findButton.on("click", function(){
+  console.log($fromCity.val());
+  console.log($destination.val());
+})
