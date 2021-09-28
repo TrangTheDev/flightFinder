@@ -27,7 +27,7 @@
 
             <p>Flight and activity calculator</p>
             <select name="Calculator" value="people" id="people">
-                <option class='personValue' value="-"> Amount of People </option>
+                <option class='personValue' value="0"> Amount of People </option>
                 <option class='personValue' value="1"> One Person </option>
                 <option class='personValue' value="2"> Two People </option>
                 <option class='personValue' value="3"> Three People </option>
@@ -41,7 +41,10 @@
             <button type="submit" id="calcSubmitBtn"> Calculate Costs </button>
 
             <div class="totalCost">
-                
+                <ul class="priceCalculator">
+                    <li id="flightDivision"></li>
+                    <li id="activitiesDivision"></li>
+                </ul>
             </div>
         </div>
     </aside>
