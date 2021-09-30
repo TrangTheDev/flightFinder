@@ -51,7 +51,34 @@ fetch(request, {
 $findButton.on("click", function(){
   console.log($fromCity.val());
   console.log($destination.val());
+  request = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/MAD-sky/DXB-sky/2021-11-29?inboundpartialdate=2019-12-01";
+  fetch(request, {
+    "headers": {
+      "x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
+      "x-rapidapi-key": "6fbd183997msh60b69efce9d0b37p193b51jsn4d762a8a5370"
+    }
+  })
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(data) {
+    console.log(data.Places.length)
+    for (i = 0; i < data.Places.length; i++) {
+      if (data.Places[i].Name == $destination.val() && data.Places[i].CityName==$fromCity.val()){
+        console.log('success')
+      } else if (data.Places[i].Name == $destination.val() || data.Places[i].CityName==$fromCity.val()) {
+        console.log('missing value to run calculation')
+      } else {
+        console.log('please enter destination location and current location')
+      }
+    }
+  })
 })
+
+
+
+
+
 // calculator 
 var submitBtn = $('#calcSubmitBtn')
 submitBtn.on('click', calculateCosts)
