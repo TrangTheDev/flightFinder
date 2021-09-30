@@ -17,6 +17,20 @@ var $findButton = $(".button");
 
 //SkyScanner API
 var request = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/MAD-sky/DXB-sky/2021-11-20?inboundpartialdate=2019-12-01";
+var placesList = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/AU/AUD/en-GB/?query=Sydney";
+	
+fetch(placesList, {
+  "headers": {
+		"x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
+		"x-rapidapi-key": "6fbd183997msh60b69efce9d0b37p193b51jsn4d762a8a5370"
+	}
+})
+.then(function(response){
+	return response.json();
+})
+.then(function(data){
+  console.log(data);
+})
 
 fetch(request, {
   "headers": {
@@ -28,7 +42,7 @@ fetch(request, {
   return response.json();
 })
 .then(function(data){
-  console.log(data);
+  //console.log(data);
 
   //Selecting a carrier
   var $par = $("<p>");
@@ -52,6 +66,8 @@ $findButton.on("click", function(){
   console.log($fromCity.val());
   console.log($destination.val());
 })
+
+
 // calculator 
 var submitBtn = $('#calcSubmitBtn')
 submitBtn.on('click', calculateCosts)
