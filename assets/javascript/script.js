@@ -90,12 +90,6 @@ $findButton.on("click", function(){
 })
 
 
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> 17223774efbbcf0a236a5880384caf90348ffc7b
 // calculator 
 var submitBtn = $('#calcSubmitBtn')
 submitBtn.on('click', calculateCosts)
