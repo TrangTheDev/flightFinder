@@ -8,6 +8,9 @@
     $( "#fromDate" ).datepicker({ dateFormat: 'dd-mm-yy' });
   } );
 
+
+
+
 var $carrierList = $(".carrier");
 var $flightTimes = $(".time");
 var $priceList = $(".price");
@@ -93,6 +96,7 @@ $findButton.on("click", function(){
 // calculator 
 var submitBtn = $('#calcSubmitBtn')
 submitBtn.on('click', calculateCosts)
+submitBtn.on('click', getLatLon)
 
 function calculateCosts() {
   var flightCost = $('.flight-price').text()
@@ -105,4 +109,42 @@ function calculateCosts() {
     $flightDivision.text('Please Select The Amount Of People Going On This Trip')
   }
 }
+
+function getLatLon() {
+  var cityName = $destination.val()
+  fetch('https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=e7f511b5d71366565851371d14913d91')  
+  .then(function(response) {
+    if (response.ok) {
+      response.json(). then(function(data) {
+        var lat = data.coord.lat
+        var lon = data.coord.lon
+        fetch("https://travel-places.p.rapidapi.com/", {
+          "method": "POST",
+          "headers": {
+            "content-type": "application/json",
+            "x-rapidapi-host": "travel-places.p.rapidapi.com",    
+            "x-rapidapi-key": "ed72924349mshae50afa305e405fp1e199fjsn0f69786a98fb"   
+          },
+          "body": JSON.stringify({
+            "query": "{ getPlaces(categories:[\"MAJOR\"],lat:" + lat + ",lng:" + lon + ",maxDistMeters:50000) { name,lat,lng,abstract,distance,categories } }"
+            })
+          })
+          .then(function(response) {
+            if (response.ok) {
+              response.json()
+              .then(function(data) {
+                // for(i = 0; i < 5; )
+                console.log(data.data.getPlaces)
+                console.log(lat, lon)
+              })
+            } else {
+              console.log('travel Places error')
+            }
+          })
+        })
+      } else {
+        console.log('weather map error')
+      }
+    })
+  }
  
