@@ -24,10 +24,31 @@
             <input type="text" class="placeSelectionInput" placeholder="From Destination" id="fromDestination" />
             <input type="text" class="placeSelectionInput" placeholder="From Date" id="fromDate" />
             <input type="text" class="placeSelectionInput" placeholder="To Date" id="toDate" />
+            <input type="submit" class="button" placeholder="Find Flights"/>
         </div>
         <div class="calculator">
 
             <p>Flight and activity calculator</p>
+            <select name="Calculator" value="people" id="people">
+                <option class='personValue' value="0"> Amount of People </option>
+                <option class='personValue' value="1"> One Person </option>
+                <option class='personValue' value="2"> Two People </option>
+                <option class='personValue' value="3"> Three People </option>
+                <option class='personValue' value="4"> Four People </option>
+                <option class='personValue' value="5"> Five People </option>
+                <option class='personValue' value="6"> Six People </option>
+                <option class='personValue' value="7"> Seven People </option>
+                <option class='personValue' value="8"> Eight People </option>
+                <option class='personValue' value="9"> Nine People </option>
+            </select>
+            <button type="submit" id="calcSubmitBtn"> Calculate Costs </button>
+
+            <div class="totalCost">
+                <ul class="priceCalculator">
+                    <li id="flightDivision"></li>
+                    <li id="activitiesDivision"></li>
+                </ul>
+            </div>
         </div>
     </aside>
     <main>
