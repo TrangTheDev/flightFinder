@@ -1,5 +1,4 @@
 html, body {
-    width: 100%;
     height: 100%;
 }
 
@@ -104,11 +103,8 @@ header h1{
     font-weight: 600;
 }
 
-.thingsToDo {
-    width: 20%;
-    height: 100%;
-    background-color: greenyellow;
-}
+
+
 
 main {
     height: 100%;
@@ -146,23 +142,130 @@ tr {
     width: 15%;
 }
 
+/*Things to do container*/
+
 .thingsToDo {
+    margin: 20px;
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: 95%;
+    width: 20%;
+    justify-content: space-evenly;
 }
 
 .thingsToDo h2 {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     font-size: var(--subheader);
     font-weight: 600;
     text-align: center;
     height: 5%;
-    border-bottom: 2px solid black;
+    font-family: 'Century Gothic', 'Segoe UI', Candara, Calibri;
+    font-size: 40px;
 }
 
 .thingsToDoList {
+<<<<<<< HEAD
+}
+
+
+.thingsToDoListCard1{
+    height: 150px;
+    width: 400px;
+    margin: 10px;
+    border-radius: 8px;
+    background-color: blue;
+    flex-direction: row;
+    text-align: center;
+    font-family: 'Century Gothic', 'Segoe UI', Candara, Calibri;
+    }
+
+
+ 
+    .description{
+        height: 27px;
+        width: 380px;
+        margin: 3px;
+        border-radius: 3px;
+        background-color: white;
+    }
+    
+    .rating {
+        height: 27px;
+        width: 70px;
+        margin: 3px;
+        border-radius: 3px;
+        background-color: white;
+            
+    }
+    
+    .price {
+        height: 27px;
+        width: 70px;
+        margin: 3px;
+        border-radius: 3px;
+        background-color: white;
+   
+     
+    }
+    
+    .tag {
+        height: 27px;
+        width: 70px;
+        margin: 3px;
+        border-radius: 3px;
+        background-color: white;
+       
+    }
+    
+ 
+.thingsToDoListCard2{
+    height: 150px;
+    width: 400px;
+    margin: 10px;
+    border-radius: 8px;
+    background-color: aqua;
+    flex-direction: row;
+    text-align: center;
+    font-family: 'Century Gothic', 'Segoe UI', Candara, Calibri;
+
+}
+
+.thingsToDoListCard3{
+    height: 150px;
+    width: 400px;
+    margin: 10px;
+    border-radius: 8px;
+    background-color: coral;
+    flex-direction: row;
+    text-align: center;
+    font-family: 'Century Gothic', 'Segoe UI', Candara, Calibri;
+
+}
+
+.thingsToDoListCard4{
+    height: 150px;
+    width: 400px;
+    margin: 10px;
+    border-radius: 8px;
+    background-color: pink;
+    flex-direction: row;
+    text-align: center;
+    font-family: 'Century Gothic', 'Segoe UI', Candara, Calibri;
+  
+}
+
+.thingsToDoListCard5{
+    height: 150px;
+    width: 400px;
+    margin: 10px;
+    border-radius: 8px;
+    background-color: red;
+    flex-direction: row;
+    text-align: center;
+    font-family: 'Century Gothic', 'Segoe UI', Candara, Calibri;
+   
+}
+
+=======
     height: 95%;
 }
+>>>>>>> main
