@@ -94,7 +94,6 @@ async function getOriginCityId(){
     originCity = data.Places[0].PlaceId;
     console.log(originCity);
     originCityID = originCity;
-    return;
   })
 }
 
