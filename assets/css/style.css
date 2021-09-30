@@ -13,8 +13,9 @@ body {
 
 aside {
     background-color: gray;
-    height: 100%;
-    width: 20%;
+    height: 95%;
+    width: 28%;
+    margin: 2%;
     background-color: hotpink;
     display: flex;
     flex-direction: column;
@@ -145,32 +146,34 @@ tr {
 /*Things to do container*/
 
 .thingsToDo {
-    margin: 20px;
+    margin: 2%;
     display: flex;
     flex-direction: column;
     height: 95%;
-    width: 20%;
+    width: 28%;
     justify-content: space-evenly;
+
 }
 
 .thingsToDo h2 {
     font-size: var(--subheader);
     font-weight: 600;
     text-align: center;
-    height: 5%;
     font-family: 'Century Gothic', 'Segoe UI', Candara, Calibri;
-    font-size: 40px;
+    font-size: 150%;
 }
 
 .thingsToDoList {
-<<<<<<< HEAD
+    height: 100%;
+    width: 99%;
+
 }
 
 
 .thingsToDoListCard1{
-    height: 150px;
-    width: 400px;
-    margin: 10px;
+    height: 18%;
+    width: 90%;
+    margin: 5%;
     border-radius: 8px;
     background-color: blue;
     flex-direction: row;
@@ -180,47 +183,10 @@ tr {
 
 
  
-    .description{
-        height: 27px;
-        width: 380px;
-        margin: 3px;
-        border-radius: 3px;
-        background-color: white;
-    }
-    
-    .rating {
-        height: 27px;
-        width: 70px;
-        margin: 3px;
-        border-radius: 3px;
-        background-color: white;
-            
-    }
-    
-    .price {
-        height: 27px;
-        width: 70px;
-        margin: 3px;
-        border-radius: 3px;
-        background-color: white;
-   
-     
-    }
-    
-    .tag {
-        height: 27px;
-        width: 70px;
-        margin: 3px;
-        border-radius: 3px;
-        background-color: white;
-       
-    }
-    
- 
 .thingsToDoListCard2{
-    height: 150px;
-    width: 400px;
-    margin: 10px;
+    height: 18%;
+    width: 90%;
+    margin: 5%;
     border-radius: 8px;
     background-color: aqua;
     flex-direction: row;
@@ -230,9 +196,9 @@ tr {
 }
 
 .thingsToDoListCard3{
-    height: 150px;
-    width: 400px;
-    margin: 10px;
+    height: 18%;
+    width: 90%;
+    margin: 5%;
     border-radius: 8px;
     background-color: coral;
     flex-direction: row;
@@ -242,9 +208,9 @@ tr {
 }
 
 .thingsToDoListCard4{
-    height: 150px;
-    width: 400px;
-    margin: 10px;
+    height: 18%;
+    width: 90%;
+    margin: 5%;
     border-radius: 8px;
     background-color: pink;
     flex-direction: row;
@@ -254,9 +220,9 @@ tr {
 }
 
 .thingsToDoListCard5{
-    height: 150px;
-    width: 400px;
-    margin: 10px;
+    height: 18%;
+    width: 90%;
+    margin: 5%;
     border-radius: 8px;
     background-color: red;
     flex-direction: row;
@@ -265,7 +231,4 @@ tr {
    
 }
 
-=======
-    height: 95%;
-}
->>>>>>> main
+
