@@ -1,11 +1,11 @@
 
 //   date picker Jquery Ui Added but needs styling
   $( function() {
-    $( "#toDate" ).datepicker({ dateFormat: 'dd-mm-yy' });
+    $( "#toDate" ).datepicker({ dateFormat: 'yy-mm-dd' });
   } );
 
   $( function() {
-    $( "#fromDate" ).datepicker({ dateFormat: 'dd-mm-yy' });
+    $( "#fromDate" ).datepicker({ dateFormat: 'yy-mm-dd' });
   } );
 
 var $carrierList = $(".carrier");
@@ -14,15 +14,20 @@ var $priceList = $(".price");
 var $destination = $("#toDestination");
 var $origin = $("#fromDestination");
 var $findButton = $(".button");
+var $departureDate = $("#fromDate");
+var $returnDate = $("#toDate");
 
 var originCityID;
 var destinationCityID;
+var originCityRequest;
+var destinationCityRequest;
 
 //SkyScanner API
-var request = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/MAD-sky/DXB-sky/2021-11-20?inboundpartialdate=2019-12-01";
+var cURL_quotes = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/AU/AUD/en-GB/";
 var placeList = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/AU/AUD/en-GB/?query=";
 
 function getQuotes() {
+
   //Get inputs from user
   var originCity = $origin.val().charAt(0).toUpperCase() + $origin.val().slice(1);
   var destinationCity = $destination.val().charAt(0).toUpperCase() + $destination.val().slice(1);
@@ -30,12 +35,14 @@ function getQuotes() {
   var originCityRequest = placeList + originCity;
   var destinationCityRequest = placeList + destinationCity;
 
-  originCityID = getOriginCityId(originCityRequest);
-  destinationCityID = getDestinationCityId(destinationCityRequest);
-
-  console.log(originCityID + " " + destinationCityID);
+  pleaseWait();
   
-  fetch(request, {
+  console.log(originCityID);
+
+  var requestQuote = cURL_quotes + originCityID + "/" + destinationCityID + "/" + $departureDate.val() + "?inboundpartialdate=" + $returnDate.val();
+  console.log(requestQuote);
+
+  fetch(requestQuote, {
     "headers": {
       "x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
       "x-rapidapi-key": "6fbd183997msh60b69efce9d0b37p193b51jsn4d762a8a5370"
@@ -45,7 +52,6 @@ function getQuotes() {
     return response.json();
   })
   .then(function(data){
-    //console.log(data);
   
     //Selecting a carrier
     var $par = $("<p>");
@@ -66,10 +72,15 @@ function getQuotes() {
   })
 }
 
-function getOriginCityId(origin){
+async function pleaseWait() {
+  await getOriginCityId();
+  getDestinationCityId();
+}
+
+async function getOriginCityId(){
   var originCity;
 
-  fetch(origin, {
+  fetch(originCityRequest, {
     "headers": {
       "x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
       "x-rapidapi-key": "6fbd183997msh60b69efce9d0b37p193b51jsn4d762a8a5370"
@@ -81,15 +92,15 @@ function getOriginCityId(origin){
   .then(function(data){
     //Get origin city ID to be used searching for quotes
     originCity = data.Places[0].PlaceId;
-    
     console.log(originCity);
+    originCityID = originCity;
+    return;
   })
-  return originCity; 
 }
 
-function getDestinationCityId(destination){
+function getDestinationCityId(){
   var destCity;
-  fetch(destination, {
+  fetch(destinationCityRequest, {
     "headers": {
       "x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
       "x-rapidapi-key": "6fbd183997msh60b69efce9d0b37p193b51jsn4d762a8a5370"
@@ -99,12 +110,11 @@ function getDestinationCityId(destination){
     return response.json();
   })
   .then(function(data){
-    //Get origin city ID to be used searching for quotes
+    //Get destination city ID to be used searching for quotes
     destCity = data.Places[0].PlaceId;
     console.log(destCity);
-
+    destinationCityID = destCity;
   })
-  return destCity; 
 }
 
 $findButton.on("click", getQuotes);
