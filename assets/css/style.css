@@ -115,20 +115,33 @@ main {
 }
 
 main table{
+    display: flex;
     border: 2px solid black;
     height: 80%;
     width: 80%;
     margin: auto;
 }
 
-td {
-    text-align: center;
-    border: 1px solid black;
+tbody {
+    width: 100%;
 }
 
-tr {
+td {
     border: 1px solid black;
-    height: 5%;
+    height: 50px;
+}
+
+td p {
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+row {
+    border: 1px solid black;
+    width: 50%;
 }
 
 .carrier {
