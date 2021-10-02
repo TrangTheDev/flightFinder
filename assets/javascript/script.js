@@ -110,6 +110,7 @@ function calculateCosts() {
   }
 }
 
+// get latitude and lonitude for major travel options near each area
 function getLatLon() {
   var cityName = $destination.val()
   fetch('https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=e7f511b5d71366565851371d14913d91')  
@@ -133,9 +134,15 @@ function getLatLon() {
             if (response.ok) {
               response.json()
               .then(function(data) {
-                // for(i = 0; i < 5; )
-                console.log(data.data.getPlaces)
-                console.log(lat, lon)
+                for(i = 0; i < 5; i++) {
+                  console.log(data.data.getPlaces[i].name)
+                  console.log(data.data.getPlaces[i].categories[0])
+                  var activityName = $('.activityName' + i)
+                  var activityType = $('.activityType' + i)
+                  activityName.text(data.data.getPlaces[i].name)
+                  activityType.text(data.data.getPlaces[i].categories[0])
+
+                }
               })
             } else {
               console.log('travel Places error')
