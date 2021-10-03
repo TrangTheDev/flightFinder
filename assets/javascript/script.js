@@ -26,7 +26,8 @@ var destinationCityRequest;
 var cURL_quotes = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/AU/AUD/en-GB/";
 var placeList = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/AU/AUD/en-GB/?query=";
 
-function getQuotes() {
+
+async function getQuotes() {
 
   //Get inputs from user
   var originCity = $origin.val().charAt(0).toUpperCase() + $origin.val().slice(1);
@@ -35,12 +36,10 @@ function getQuotes() {
   var originCityRequest = placeList + originCity;
   var destinationCityRequest = placeList + destinationCity;
 
-  pleaseWait();
-  
-  console.log(originCityID);
+  await getOriginCityId(originCityRequest);
+  await getDestinationCityId(destinationCityRequest);
 
   var requestQuote = cURL_quotes + originCityID + "/" + destinationCityID + "/" + $departureDate.val() + "?inboundpartialdate=" + $returnDate.val();
-  console.log(requestQuote);
 
   fetch(requestQuote, {
     "headers": {
@@ -52,8 +51,10 @@ function getQuotes() {
     return response.json();
   })
   .then(function(data){
+
+    console.log(data);
   
-    //Selecting a carrier
+    //Getting all carriers available
     var $par = $("<p>");
     $par.addClass("carrier-option");
     $par.text(data.Carriers[0].Name);
@@ -72,53 +73,34 @@ function getQuotes() {
   })
 }
 
-async function pleaseWait() {
-  await getOriginCityId();
-  getDestinationCityId();
-}
 
-async function getOriginCityId(){
-  var originCity;
 
-  fetch(originCityRequest, {
+async function getOriginCityId(originCityRequest){
+
+  var response = await fetch(originCityRequest, {
     "headers": {
       "x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
       "x-rapidapi-key": "6fbd183997msh60b69efce9d0b37p193b51jsn4d762a8a5370"
     }
-  })
-  .then(function(response){
-    return response.json();
-  })
-  .then(function(data){
-    //Get origin city ID to be used searching for quotes
-    originCity = data.Places[0].PlaceId;
-    console.log(originCity);
-    originCityID = originCity;
-  })
+  });
+
+  var data = await response.json();
+  originCityID = data.Places[0].PlaceId;
 }
 
-function getDestinationCityId(){
+async function getDestinationCityId(destinationCityRequest){
   var destCity;
-  fetch(destinationCityRequest, {
+  var response = await fetch(destinationCityRequest, {
     "headers": {
       "x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
       "x-rapidapi-key": "6fbd183997msh60b69efce9d0b37p193b51jsn4d762a8a5370"
     }
   })
-  .then(function(response){
-    return response.json();
-  })
-  .then(function(data){
-    //Get destination city ID to be used searching for quotes
-    destCity = data.Places[0].PlaceId;
-    console.log(destCity);
-    destinationCityID = destCity;
-  })
+  var data = await response.json();
+  destinationCityID = data.Places[0].PlaceId
 }
 
 $findButton.on("click", getQuotes);
-
-
 
 // calculator 
 var submitBtn = $('#calcSubmitBtn')
