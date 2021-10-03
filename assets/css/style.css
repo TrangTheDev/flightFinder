@@ -132,15 +132,16 @@ tr {
     text-align: center;
 }
 
-.carrier {
+
+.carrier-list {
     width: 25%;
 }
 
-.time {
+.time-list {
     width: 50%;
 }
 
-.price {
+.price-list {
     width: 15%;
 }
 

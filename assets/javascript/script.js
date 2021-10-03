@@ -29,6 +29,7 @@ var placeList = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/a
 
 async function getQuotes() {
 
+  //Remove previous search
   clearTable();
 
   //Get inputs from user
@@ -53,30 +54,28 @@ async function getQuotes() {
     return response.json();
   })
   .then(function(data){
-
-    console.log(data);
   
     //Getting all carriers available
     for(var i=0; i<data.Carriers.length; i++){
       //Display Carrier name
-      var $carrier = $("<p>");
+      var $carrier = $("<li>");
       $carrier.css("display","block");
       $carrier.addClass("carrier-option");
       $carrier.text(data.Carriers[i].Name);
       $carrierList.append($carrier);
 
       //Display flight time
-      var $departureTime = $("<p>");
+      var $departureTime = $("<li>");
       $departureTime.css("display","block");
       $departureTime.addClass("flight-time");
       $departureTime.text(data.Quotes[i].OutboundLeg.DepartureDate);
       $flightTimes.append($departureTime);
   
       //Display price
-      var $price = $("<p>");
+      var $price = $("<li>");
       $price.css("display","block");
       $price.addClass("flight-price");
-      $price.text(data.Curriencies[0].Code + data.Curriencies[0].Symbol + data.Quotes[i].MinPrice);
+      $price.text(data.Currencies[0].Code + data.Currencies[0].Symbol + data.Quotes[i].MinPrice);
       $priceList.append($price);
     }
   })
@@ -111,22 +110,16 @@ async function getDestinationCityId(destinationCityRequest){
 
 //Remove all children to do a new search
 function clearTable() {
-  if($carrierList.firstChild){
-    while($carrierList.FirstChild){
-      $carrierList.removeChild($carrierList.lastChild);
-    }
+  if($carrierList.is(":parent")){
+    $carrierList.empty();
   }
-  if($flightTimes.firstChild){
-    while($flightTimes.FirstChild){
-      $flightTimes.removeChild($flightTimes.lastChild);
-    }
+  if($flightTimes.is(":parent")){
+    $flightTimes.empty();
   }
-  if($priceList.firstChild){
-    while($priceList.FirstChild){
-      $priceList.removeChild($priceList.lastChild);
-    }
-    return;
+  if($priceList.is(":parent")){
+    $priceList.empty();
   }
+}
 
 $findButton.on("click", getQuotes);
 
