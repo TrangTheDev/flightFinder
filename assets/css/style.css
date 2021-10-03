@@ -129,14 +129,15 @@ td {
 tr {
     border: 1px solid black;
     height: 5%;
+    text-align: center;
 }
 
 .carrier {
-    width: 15%;
+    width: 25%;
 }
 
 .time {
-    width: 70%;
+    width: 50%;
 }
 
 .price {

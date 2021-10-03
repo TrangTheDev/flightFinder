@@ -29,6 +29,8 @@ var placeList = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/a
 
 async function getQuotes() {
 
+  clearTable();
+
   //Get inputs from user
   var originCity = $origin.val().charAt(0).toUpperCase() + $origin.val().slice(1);
   var destinationCity = $destination.val().charAt(0).toUpperCase() + $destination.val().slice(1);
@@ -55,21 +57,28 @@ async function getQuotes() {
     console.log(data);
   
     //Getting all carriers available
-    var $par = $("<p>");
-    $par.addClass("carrier-option");
-    $par.text(data.Carriers[0].Name);
-    $carrierList.append($par);
+    for(var i=0; i<data.Carriers.length; i++){
+      //Display Carrier name
+      var $carrier = $("<p>");
+      $carrier.css("display","block");
+      $carrier.addClass("carrier-option");
+      $carrier.text(data.Carriers[i].Name);
+      $carrierList.append($carrier);
+
+      //Display flight time
+      var $departureTime = $("<p>");
+      $departureTime.css("display","block");
+      $departureTime.addClass("flight-time");
+      $departureTime.text(data.Quotes[i].OutboundLeg.DepartureDate);
+      $flightTimes.append($departureTime);
   
-    var $takeOffTime = $("<p>");
-    $takeOffTime.addClass("flight-times");
-    var text = data.Quotes[0].OutboundLeg.DepartureDate;
-    $takeOffTime.text(text);
-    $flightTimes.append($takeOffTime);
-  
-    var $price = $("<p>");
-    $price.addClass("flight-price");
-    $price.text(data.Quotes[0].MinPrice);
-    $priceList.append( $price);
+      //Display price
+      var $price = $("<p>");
+      $price.css("display","block");
+      $price.addClass("flight-price");
+      $price.text(data.Curriencies[0].Code + data.Curriencies[0].Symbol + data.Quotes[i].MinPrice);
+      $priceList.append($price);
+    }
   })
 }
 
@@ -99,6 +108,25 @@ async function getDestinationCityId(destinationCityRequest){
   var data = await response.json();
   destinationCityID = data.Places[0].PlaceId
 }
+
+//Remove all children to do a new search
+function clearTable() {
+  if($carrierList.firstChild){
+    while($carrierList.FirstChild){
+      $carrierList.removeChild($carrierList.lastChild);
+    }
+  }
+  if($flightTimes.firstChild){
+    while($flightTimes.FirstChild){
+      $flightTimes.removeChild($flightTimes.lastChild);
+    }
+  }
+  if($priceList.firstChild){
+    while($priceList.FirstChild){
+      $priceList.removeChild($priceList.lastChild);
+    }
+    return;
+  }
 
 $findButton.on("click", getQuotes);
 
