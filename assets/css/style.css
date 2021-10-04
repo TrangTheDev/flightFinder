@@ -1,5 +1,6 @@
 html, body {
     height: 100%;
+    flex-wrap: wrap;
 }
 
 :root {
@@ -8,12 +9,20 @@ html, body {
 
 body {
     display: flex;
-    justify-content: space-between;
-    flex-direction: wrap;
     background-image: url("https://media.cntraveler.com/photos/581250f2997d59497dccf8bc/16:9/w_2560%2Cc_limit/GettyImages-185298837.jpg");
     background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+
+@media screen and (max-width: 900px) {
+    body {display: block;}
+}
+
+
+.col-1, .col-2, .col-3 {
+    flex: 1 1 auto;
 }
 
 aside {
@@ -148,6 +157,8 @@ aside .placeSelection{
 }
 
 /*flight details section*/
+
+co
 
 
 main {
@@ -329,3 +340,4 @@ tbody tr:nth-child(even){
 .hidden {
     display: none;
 }
+
