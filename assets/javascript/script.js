@@ -180,8 +180,6 @@ function getLatLon() {
               response.json()
               .then(function(data) {
                 for(i = 0; i < 5; i++) {
-                  console.log(data.data.getPlaces[i].name)
-                  console.log(data.data.getPlaces[i].categories[0])
                   var activityName = $('.activityName' + i)
                   var activityType = $('.activityType' + i)
                   activityName.text(data.data.getPlaces[i].name)
