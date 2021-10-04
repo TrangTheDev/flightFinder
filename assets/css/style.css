@@ -318,4 +318,14 @@ tbody tr:nth-child(even){
 
 }
 
+.errorPage {
+    height: 90%;
+    width: 60%;
+    margin: 5%;
+    display: flex;
+    flex-direction: column;
+}
 
+.hidden {
+    display: none;
+}

@@ -64,6 +64,8 @@ var $origin = $("#fromDestination");
 var $findButton = $(".button");
 var $departureDate = $("#fromDate");
 var $returnDate = $("#toDate");
+var $mainEl = $('#main')
+var $errorPage = $('#errorPage')
 
 var originCityID;
 var destinationCityID;
@@ -101,8 +103,7 @@ async function getQuotes() {
   .then(function(response){
     return response.json();
   })
-  .then(function(data){
-  
+   .then(function(data){
     //Getting all carriers available
     for(var i=0; i<data.Carriers.length; i++){
       //Display Carrier name
@@ -139,9 +140,15 @@ async function getOriginCityId(originCityRequest){
       "x-rapidapi-key": "6fbd183997msh60b69efce9d0b37p193b51jsn4d762a8a5370"
     }
   });
-
+  if (response.ok) {
   var data = await response.json();
   originCityID = data.Places[0].PlaceId;
+  } else {
+    console.log("error: at rapidHost api Destination City" + response.status)
+    $mainEl.attr('class', 'hidden')
+    $errorPage.attr('class', 'errorPage')
+    $('#errorCode').text(response.status)
+  }
 }
 
 async function getDestinationCityId(destinationCityRequest){
@@ -152,8 +159,15 @@ async function getDestinationCityId(destinationCityRequest){
       "x-rapidapi-key": "6fbd183997msh60b69efce9d0b37p193b51jsn4d762a8a5370"
     }
   })
+  if(response.ok) {
   var data = await response.json();
   destinationCityID = data.Places[0].PlaceId
+  } else {
+    console.log("error: at rapidHost api Destination City" + response.status)
+    $mainEl.attr('class', 'hidden')
+    $errorPage.attr('class', 'errorPage')
+    $('#errorCode').text(response.status)
+  }
 }
 
 //Remove all children to do a new search
@@ -170,11 +184,14 @@ function clearTable() {
 }
 
 $findButton.on("click", getQuotes);
-
+$findButton.on('click', getLatLon);
+$findButton.on('click', function errorReset() {
+  $errorPage.attr('class', 'hidden')
+})
 // calculator 
 var submitBtn = $('#calcSubmitBtn')
 submitBtn.on('click', calculateCosts)
-submitBtn.on('click', getLatLon)
+
 
 function calculateCosts() {
   var flightCost = $('.flight-price').text()
@@ -194,7 +211,8 @@ function getLatLon() {
   fetch('https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=e7f511b5d71366565851371d14913d91')  
   .then(function(response) {
     if (response.ok) {
-      response.json(). then(function(data) {
+      response.json() 
+      .then(function(data) {
         var lat = data.coord.lat
         var lon = data.coord.lon
         fetch("https://travel-places.p.rapidapi.com/", {
@@ -221,12 +239,18 @@ function getLatLon() {
                 }
               })
             } else {
-              console.log('travel Places error')
+              $mainEl.attr('class', 'hidden')
+              $errorPage.attr('class', 'errorPage')
+              console.log("error: in travelHost Api likely from destination input" + response.status)
+              $('#errorCode').text(response.status)
             }
           })
         })
       } else {
-        console.log('weather map error')
+        console.log("error: with openweatherorg likely issue with destination input" + response.status)
+        $mainEl.attr('class', 'hidden')
+        $errorPage.attr('class', 'errorPage')
+        $('#errorCode').text(response.status)
       }
     })
   }
