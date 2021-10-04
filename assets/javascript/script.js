@@ -117,7 +117,7 @@ async function getQuotes() {
       var $departureTime = $("<li>");
       $departureTime.css("display","block");
       $departureTime.addClass("flight-time");
-      var flightTime = data.Quotes[i].OutboundLeg.DepartureDate.replace(/T/, " ");
+      var flightTime = data.Quotes[i].OutboundLeg.DepartureDate.slice(0,10);
       $departureTime.text(flightTime);
       $flightTimes.append($departureTime);
   
