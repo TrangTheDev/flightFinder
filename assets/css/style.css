@@ -96,6 +96,135 @@ th, td {
     border: 1px solid black;
 }
 
+h3 {
+    font-size: x-large;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.places-interest {
+    background-color: palegoldenrod;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.card {
+    background-color: peru;
+    width: 90%;
+    height: 200px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5%;
+    border-radius: 10px;
+}
+
+/* To display the web page according to screen size, note that page is made for mobile devices fisrt*/
+/* 668px for tablets */
+@media screen and (min-width: 668px) {
+
+    h1 {
+        font-size: 48px;
+    }
+
+    .finder-col {
+        width: 95%;
+        flex-direction: row;
+        margin-left: 2.5%;
+        height: 200px;
+    }
+
+    .finder-col > div > h2 {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .currency-converter {
+        margin: 0;
+    }
+
+    .flight-seeker {
+        margin: 0;
+    }
+
+    .calculator {
+        margin: 0;
+    }
+
+    table {
+        width: 95%;
+        margin-left: 2.5%;
+    }
+
+    th {
+        font-size: larger;
+        align-items: flex-end;
+        height: 40px;
+    }
+
+    td {
+        height: 100px;
+    }
+
+    h3 {
+        font-size: xx-large;
+    }
+
+    .places-interest {
+        width: 95%;
+        margin-left: 2.5%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .card {
+        margin: 10px;
+        width: 350px;
+        height: 350px;
+        flex: 0 1 350px;
+    }
+
+}
+
+/* 992px for desktop and laptops */
+@media screen and (min-width: 992px) {
+
+    .finder-col {
+        flex-direction: column;
+        width: 25%;
+        float: left;
+        height: auto;
+        margin-right: 3%;
+        align-items: center;
+    }
+
+    table {
+        width: 65%;
+
+    }
+
+    .places-interest {
+        flex-direction: row;
+    }
+
+    section {
+        background-color: pink;
+        display: flex;
+        flex-direction: column;
+    }
+
+    section > h3 {
+        display: inline-block;
+    }
+  }
+
+
+
+/*Error page */
 .errorPage {
     height: 90%;
     width: 60%;
