@@ -147,68 +147,89 @@ aside .placeSelection{
     flex-wrap: wrap;
 }
 
+/*flight details section*/
+
+
+main {
+    height: 90%;
+    width: 60%;
+    margin: 5%;
+    display: flex;
+    flex-direction: column;
+   
+}
+
 header {
     width: 100%;
     height: 10%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align: center;
+    text-align: left;
+    margin-left: 10%;
+    margin-top: 3%
 }
 
 header h1{
-    font-size: 30px;
+    font-size: 600%;
     font-weight: 600;
+    }
+
+
+table {
+    margin-top: 20%;
+    width: 100%;
+    border-collapse: collapse;
 }
 
-
-
-
-main {
-    height: 100%;
-    width: 60%;
-    display: flex;
-    flex-direction: column;
+table th, td {
+    border: 1px solid black;
 }
 
-main table{
-    border: 2px solid black;
-    height: 80%;
-    width: 80%;
-    margin: auto;
+thead {
+    background-color: black;
+    color: white;
+}
+
+th {
+    text-align: center;
+    vertical-align: middle;
+    height: 50px;
+    font-size: x-large;
 }
 
 td {
-    text-align: center;
-    border: 1px solid black;
+    height: 50px;
+    vertical-align: middle;
+    padding-left: 5%;
+    font-size: large;
 }
 
-tr {
-    border: 1px solid black;
-    height: 5%;
+tbody td:hover {background-color: #ddd;}
+
+tbody tr:nth-child(odd){
+      background-color:white;
 }
 
-.carrier {
-    width: 15%;
+tbody tr:nth-child(even){
+    background-color:lightgrey;
 }
 
-.time {
-    width: 70%;
-}
 
-.price {
-    width: 15%;
-}
 
 /*Things to do container*/
 
 .thingsToDo {
-    margin: 2%;
+    height: 97%; 
+    width: 360px;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    box-sizing: border-box;
+    padding:10px;
+    color: #fff;
     display: flex;
     flex-direction: column;
-    height: 95%;
-    width: 28%;
-    justify-content: space-evenly;
+    margin: 20px 15px 15px 10px;
 
 }
 
@@ -216,7 +237,6 @@ tr {
     font-size: var(--subheader);
     font-weight: 600;
     text-align: center;
-    font-family: 'Century Gothic', 'Segoe UI', Candara, Calibri;
     font-size: 150%;
 }
 
@@ -224,7 +244,6 @@ tr {
     font-size: var(--subheader);
     font-weight: 600;
     text-align: center;
-    font-family: 'Century Gothic', 'Segoe UI', Candara, Calibri;
     font-size: 100%;
     color: black;
 }
@@ -233,7 +252,6 @@ tr {
     font-size: var(--subheader);
     font-weight: 600;
     text-align: center;
-    font-family: 'Century Gothic', 'Segoe UI', Candara, Calibri;
     font-size: 100%;
     color: black;
 }
@@ -253,8 +271,7 @@ tr {
     background-color: blue;
     flex-direction: row;
     text-align: center;
-    font-family: 'Century Gothic', 'Segoe UI', Candara, Calibri;
-    }
+     }
 
 
  
@@ -266,8 +283,6 @@ tr {
     background-color: aqua;
     flex-direction: row;
     text-align: center;
-    font-family: 'Century Gothic', 'Segoe UI', Candara, Calibri;
-
 }
 
 .thingsToDoListCard3{
@@ -278,7 +293,6 @@ tr {
     background-color: coral;
     flex-direction: row;
     text-align: center;
-    font-family: 'Century Gothic', 'Segoe UI', Candara, Calibri;
 
 }
 
@@ -290,7 +304,6 @@ tr {
     background-color: pink;
     flex-direction: row;
     text-align: center;
-    font-family: 'Century Gothic', 'Segoe UI', Candara, Calibri;
   
 }
 
@@ -302,8 +315,7 @@ tr {
     background-color: red;
     flex-direction: row;
     text-align: center;
-    font-family: 'Century Gothic', 'Segoe UI', Candara, Calibri;
-   
+
 }
 
 
