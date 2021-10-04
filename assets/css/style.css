@@ -6,6 +6,10 @@ html, body {
     --subheader: 24px;
 }
 
+* {
+    box-sizing: border-box;
+  }
+
 body {
     display: flex;
     justify-content: space-between;
@@ -177,7 +181,7 @@ header h1{
 
 
 table {
-    margin-top: 20%;
+    margin-top: 15%;
     width: 100%;
     border-collapse: collapse;
 }
@@ -318,4 +322,23 @@ tbody tr:nth-child(even){
 
 }
 
+/*media query style*/
 
+.col-1 {
+    width: 25%;
+
+}
+.col-2 {width: 50%;
+
+}
+.col-3 {width: 25%;
+
+}
+
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  [class*="col-"] {
+    width: 100%;
+  }
+}
