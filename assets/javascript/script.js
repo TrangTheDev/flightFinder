@@ -142,6 +142,7 @@ async function getOriginCityId(originCityRequest){
     }
   });
   if (response.ok) {
+    $mainEl.attr('class', '')
   var data = await response.json();
   originCityID = data.Places[0].PlaceId;
   } else {
@@ -167,7 +168,7 @@ async function getDestinationCityId(destinationCityRequest){
     console.log("error: at rapidHost api Destination City" + response.status)
     $mainEl.attr('class', 'hidden')
     $errorPage.attr('class', 'errorPage')
-    $('#errorCode').text(response.status)
+    $('#errorCode').text(response.status + '--there may be issues with your search options please double check them and try again to see flight details')
   }
 }
 
@@ -189,20 +190,21 @@ $findButton.on('click', getLatLon);
 $findButton.on('click', function errorReset() {
   $errorPage.attr('class', 'hidden')
 })
+
+
 // calculator 
 var submitBtn = $('#calcSubmitBtn')
 submitBtn.on('click', calculateCosts)
 
-
 function calculateCosts() {
-  var flightCost = $('.flight-price').text()
+  var flightCost = Number($('.price').text().slice(4))
   var peopleValue = $('#people option:selected').val()
-  var $flightDivision = $('#flightDivision')
+  var $totalCost = $('#totalCost')
   if (peopleValue != 0) {
-    var $perPersonFlightCost = (flightCost)/(peopleValue)
-    $flightDivision.text("Flight Cost Per Person= " + $perPersonFlightCost);
+    var $perPersonFlightCost = (flightCost)*(peopleValue)
+    $totalCost.text("Total Cost= " + $perPersonFlightCost);
   } else {
-    $flightDivision.text('Please Select The Amount Of People Going On This Trip')
+    $totalCost.text('Please Select The Amount Of People Going On This Trip')
   }
 }
 
