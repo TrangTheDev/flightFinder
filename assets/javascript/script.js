@@ -233,6 +233,7 @@ function getLatLon() {
             if (response.ok) {
               response.json()
               .then(function(data) {
+                console.log(data)
                 for(i = 0; i < 5; i++) {
                   var activityName = $('.activityName' + i)
                   var activityType = $('.activityType' + i)
