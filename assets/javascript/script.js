@@ -238,7 +238,7 @@ function getLatLon() {
                   var activityName = $('.activityName' + i)
                   var activityType = $('.activityType' + i)
                   activityName.text(data.data.getPlaces[i].name)
-                  activityType.text(data.data.getPlaces[i].categories[0])
+                  activityType.html('<p>' + data.data.getPlaces[i].categories[0] + '</p>' + '<img src="./pictures/sydney' + i + '.jpg" width="50%"/>')
 
                 }
               })
