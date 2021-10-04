@@ -6,51 +6,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flight Finder</title>
     <link rel="stylesheet" href="./assets/css/reset.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"> -->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="https://kit.fontawesome.com/9299651976.js" crossorigin="anonymous"></script>
     
 </head>
 <body>
-    <aside>
-        <div class="currencySelector">
-            <h2> Currency: </h2>
-            <select name="currency" value="Currency" id="currency">
-
-            </select>
-        </div>
+    <aside class="col-1">        
         <div class="placeSelection">
-            <input type="text" class="placeSelectionInput" placeholder="To Destination" id="toDestination" />
-            <input type="text" class="placeSelectionInput" placeholder="From Destination" id="fromDestination" />
-            <input type="text" class="placeSelectionInput" placeholder="From Date" id="fromDate" />
-            <input type="text" class="placeSelectionInput" placeholder="To Date" id="toDate" />
+            
+            <!--Currency converter start-->
+            <h2>Currency Converter</h2>
+            <div class="money">
+                <span><i class="fas fa-wallet"></i></span>
+                <input type="number" id="number" placeholder="00000"></input>
+            </div>
+            <div class="inpbox select">
+                <select name="currency" class="currency" onchange="updatevalue()"></select>
+            </div>
+            <div class="money">
+                <span><i class="fas fa-wallet"></i></span>
+                <input type="text" id="output" placeholder="00000" disabled>
+            </div>
+            <div class="inpbox select">
+                <select name="currency" class="currency" onchange="updatevalue()"></select>
+            </div>
+            <!--Currency conversion end-->
+
+            <!--Flight form start-->
+            <h2 class="part2">Book Flights</h2>
+            <div class="inpbox full">
+                <span><i class="fas fa-plane-departure"></i></span>
+                <input type="text" class="placeSelectionInput" placeholder="To Destination" id="toDestination" />
+            </div>
+            <div class="inpbox full">
+                <span><i class="fas fa-plane-arrival"></i></span>
+                <input type="text" class="placeSelectionInput" placeholder="From Destination" id="fromDestination" />
+            </div>
+            <div class="inpbox full">
+                <span><i class="fas fa-calendar-alt"></i></span>
+                <input type="text" class="placeSelectionInput" placeholder="From Date" id="fromDate" />
+            </div>
+            
+            <div class="inpbox full">
+                <span><i class="far fa-calendar-alt"></i></span>
+                <input type="text" class="placeSelectionInput" placeholder="To Date" id="toDate" />
+            </div>
             <input type="submit" class="button" placeholder="Find Flights"/>
-        </div>
-        <div class="calculator">
+            <!--Flight form start-->
 
-            <p>Flight and activity calculator</p>
-            <select name="Calculator" value="people" id="people">
-                <option class='personValue' value="0"> Amount of People </option>
-                <option class='personValue' value="1"> One Person </option>
-                <option class='personValue' value="2"> Two People </option>
-                <option class='personValue' value="3"> Three People </option>
-                <option class='personValue' value="4"> Four People </option>
-                <option class='personValue' value="5"> Five People </option>
-                <option class='personValue' value="6"> Six People </option>
-                <option class='personValue' value="7"> Seven People </option>
-                <option class='personValue' value="8"> Eight People </option>
-                <option class='personValue' value="9"> Nine People </option>
-            </select>
+            <!--Calculator start-->
+            <p class="part3">Flight and activity calculator</p>
+            <div class="inpbox full">
+                <span><i class="fas fa-users"></i></span>
+                <select name="Calculator" value="people" id="people">
+                    <option class='personValue' value="0"> Amount of People </option>
+                    <option class='personValue' value="1"> One Person </option>
+                    <option class='personValue' value="2"> Two People </option>
+                    <option class='personValue' value="3"> Three People </option>
+                    <option class='personValue' value="4"> Four People </option>
+                    <option class='personValue' value="5"> Five People </option>
+                    <option class='personValue' value="6"> Six People </option>
+                    <option class='personValue' value="7"> Seven People </option>
+                    <option class='personValue' value="8"> Eight People </option>
+                    <option class='personValue' value="9"> Nine People </option>
+                </select>
+            </div>
             <button type="submit" id="calcSubmitBtn"> Calculate Costs </button>
-
             <div class="totalCost">
                 <ul class="priceCalculator">
                     <li id="flightDivision"></li>
                     <li id="activitiesDivision"></li>
                 </ul>
             </div>
-        </div>
+            <!--Calculator end-->
+        </div>  
     </aside>
+
     <main>
         <header>
             <h1> Flight Finder </h1>
@@ -63,6 +96,7 @@
             </tr>
         </table>
     </main>
+
     <div class="thingsToDo">
         <h2>Recommended Activities!</h2>
         <ul class="thingsToDoList">

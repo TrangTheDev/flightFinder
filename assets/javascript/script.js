@@ -1,3 +1,48 @@
+//Currency converter script start
+//declaring the variables
+var select = document.querySelectorAll('.currency');
+var number = document.getElementById("number");
+var output = document.getElementById("output");
+
+
+//fetching the URL from franfurter app and getting json data
+fetch('https://api.frankfurter.app/currencies').then((data) => data.json())
+  .then((data) => {
+    display(data);
+    console.log(data);
+  });
+
+//function to select the entries from API like AUD:Australia and putting in select variable and making its option
+function display(data) {
+  var entries = Object.entries(data);
+    for (var i = 0; i < entries.length; i++) {
+      select[0].innerHTML += `<option value="${entries[i][0]}"> ${entries[i][0]} : ${entries[i][1]} </option>`;
+      select[1].innerHTML += `<option value="${entries[i][0]}"> ${entries[i][0]} : ${entries[i][1]} </option>`;
+    }
+}
+
+//currency conversion function and added onchange attribe in select tag in index.html
+function updatevalue() {
+  var currency1 = select[0].value; //putting select enteries in currency1 and value will be stored in fetch URL to get the data
+  var currency2 = select[1].value;
+  var value = number.value; //number ia a global variable and this value will be store in fetch URL to get the data
+  if (currency1 != currency2) { 
+    convert(currency1, currency2, value); 
+  } else {
+      alert("Choose Different Currency");
+    }
+}
+function convert(currency1, currency2, value) {
+  const host = "api.frankfurter.app";   //site name
+  fetch(`https://${host}/latest?amount=${value}&from=${currency1}&to=${currency2}`) //host, amount, from and to keywords are used
+    .then((val) => val.json())
+    .then((val) => {
+      console.log('rate', val);
+      console.log(Object.values(val.rates)[0]);  //object has a property rates
+      output.value = Object.values(val.rates)[0]; //gloabl variable output is disabled already in index
+  });
+}
+//currency converter script end
 
 //   date picker Jquery Ui Added but needs styling
   $( function() {
