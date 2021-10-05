@@ -64,8 +64,9 @@ var $origin = $("#fromDestination");
 var $findButton = $(".button");
 var $departureDate = $("#fromDate");
 var $returnDate = $("#toDate");
-var $mainEl = $('#main')
+var flightDisplay = $('#flightDisplay')
 var $errorPage = $('#errorPage')
+
 
 var originCityID;
 var destinationCityID;
@@ -142,12 +143,12 @@ async function getOriginCityId(originCityRequest){
     }
   });
   if (response.ok) {
-    $mainEl.attr('class', '')
+    flightDisplay.attr('class', '')
   var data = await response.json();
   originCityID = data.Places[0].PlaceId;
   } else {
     console.log("error: at rapidHost api Destination City" + response.status)
-    $mainEl.attr('class', 'hidden')
+    flightDisplay.attr('class', 'hidden')
     $errorPage.attr('class', 'errorPage')
     $('#errorCode').text(response.status)
   }
@@ -166,7 +167,7 @@ async function getDestinationCityId(destinationCityRequest){
   destinationCityID = data.Places[0].PlaceId
   } else {
     console.log("error: at rapidHost api Destination City" + response.status)
-    $mainEl.attr('class', 'hidden')
+    flightDisplay.attr('class', 'hidden')
     $errorPage.attr('class', 'errorPage')
     $('#errorCode').text(response.status + '--there may be issues with your search options please double check them and try again to see flight details')
   }
@@ -243,16 +244,15 @@ function getLatLon() {
                 }
               })
             } else {
-              $mainEl.attr('class', 'hidden')
+              flightDisplay.attr('class', 'hidden')
               $errorPage.attr('class', 'errorPage')
-              console.log("error: in travelHost Api likely from destination input" + response.status)
               $('#errorCode').text(response.status)
             }
           })
         })
       } else {
         console.log("error: with openweatherorg likely issue with destination input" + response.status)
-        $mainEl.attr('class', 'hidden')
+        flightDisplay.attr('class', 'hidden')
         $errorPage.attr('class', 'errorPage')
         $('#errorCode').text(response.status)
       }
