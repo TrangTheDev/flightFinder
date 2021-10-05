@@ -13,13 +13,20 @@ header {
     margin-bottom: 20px;
 }
 
+.button {
+    background-color: #f0932b;
+    border-radius: 5px;
+    font-weight: 500;
+    box-shadow: 1px 1px inset;
+}
+
 h1 {
     display: inline-block;
-    font-size: 700;
+    font-weight: 700;
     margin-top: 10px;
-    color: whitesmoke;
-    background-color: teal;
+    color: #130f40;
     border-radius: 10px;
+    font-size: xx-large;
 }
 
 .finder-col {
@@ -30,7 +37,7 @@ h1 {
     margin-left: 5%;
     border-radius: 10px;
     border: 3px black solid;
-    opacity: 90%;
+    background: rgba(0, 0, 0, 0.15)
 }
 
 h2 {
@@ -77,36 +84,61 @@ h2 {
 
 .total-cost {
     margin-top: 10px;
-    background-color: bisque;
     width: 50%;
     margin-left: 25%;
 }
 
 table {
-    background-color: orange;
     text-align: center;
     margin-left: 5%;
     margin-top: 20px;
     width: 90%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+    border-radius: 10px;
+    border-style: hidden; /* hide standard table (collapsed) border */
+    box-shadow: 0 0 0 3px black; /* this draws the table border  */ 
+    background: rgba(0, 0, 0, 0.15)
+
+
+}
+
+td {
+    font-weight: 500;
+    color: white;
+    border: 1px solid #ccc;
+    background: rgba(50, 50, 50, 0.65)
+
 }
 
 th {
-    background-color: orchid;
+    font-weight: 600;
+    color: white;
+    background: rgba(0, 0, 0, 0.65)
+
 }
 
 th, td {
     padding: 15px;
-    border: 1px solid black;
+    border: 3px solid black;
 }
 
 h3 {
+    display: inline-block;
+    margin-top: 20px;
     font-size: x-large;
     text-align: center;
     margin-top: 30px;
+    color: whitesmoke;
+    font-weight: 700;
+}
+
+section {
+    background-color: black;
+    text-align: center;
 }
 
 .places-interest {
-    background-color: palegoldenrod;
     width: 90%;
     margin-left: 5%;
     margin-top: 10px;
@@ -116,7 +148,7 @@ h3 {
 }
 
 .card {
-    background-color: peru;
+    color: whitesmoke;
     width: 90%;
     height: 200px;
     margin-top: 5px;
@@ -186,8 +218,8 @@ h3 {
 
     .card {
         margin: 10px;
-        width: 350px;
-        height: 350px;
+        width: 150px;
+        height: 150px;
         flex: 0 1 350px;
     }
 
