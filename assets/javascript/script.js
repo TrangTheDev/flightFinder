@@ -107,26 +107,29 @@ async function getQuotes() {
     //Getting all carriers available
     for(var i=0; i<data.Carriers.length; i++){
       //Display Carrier name
-      var $carrier = $("<li>");
+      var $carrier = $("<p>");
       $carrier.css("display","block");
       $carrier.addClass("carrier-option");
       $carrier.text(data.Carriers[i].Name);
       $carrierList.append($carrier);
+      $carrierList.append($("<br>"));
 
       //Display flight time
-      var $departureTime = $("<li>");
+      var $departureTime = $("<p>");
       $departureTime.css("display","block");
       $departureTime.addClass("flight-time");
       var flightTime = data.Quotes[i].OutboundLeg.DepartureDate.slice(0,10);
       $departureTime.text(flightTime);
       $flightTimes.append($departureTime);
+      $flightTimes.append($("<br>"));
   
       //Display price
-      var $price = $("<li>");
+      var $price = $("<p>");
       $price.css("display","block");
       $price.addClass("flight-price");
       $price.text(data.Currencies[0].Code + data.Currencies[0].Symbol + data.Quotes[i].MinPrice);
       $priceList.append($price);
+      $priceList.append($("<br>"));
     }
   })
 }

@@ -99,8 +99,6 @@ table {
     border-style: hidden; /* hide standard table (collapsed) border */
     box-shadow: 0 0 0 3px black; /* this draws the table border  */ 
     background: rgba(0, 0, 0, 0.15)
-
-
 }
 
 td {
@@ -121,6 +119,11 @@ th {
 th, td {
     padding: 15px;
     border: 3px solid black;
+}
+
+th > p {
+    font-weight: 600;
+    font-size: 18px;
 }
 
 h3 {
