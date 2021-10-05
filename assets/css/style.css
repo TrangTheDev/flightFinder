@@ -107,23 +107,25 @@ h3 {
 
 .places-interest {
     background-color: palegoldenrod;
+    border-radius: 10px;
     width: 90%;
-    margin-left: 5%;
-    margin-top: 10px;
+    margin: 10px auto;
+    padding-top: 4%;
+    margin-bottom: 20px;
     text-align: center;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .card {
     background-color: peru;
     width: 90%;
+    margin-bottom: 4%;
     height: 200px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    margin-left: 5%;
     border-radius: 10px;
 }
+
 
 /* To display the web page according to screen size, note that page is made for mobile devices fisrt*/
 /* 668px for tablets */
@@ -169,7 +171,7 @@ h3 {
     }
 
     td {
-        height: 100px;
+        height: 26px;
     }
 
     h3 {
@@ -177,20 +179,22 @@ h3 {
     }
 
     .places-interest {
+        margin: 0 auto;
+        margin-bottom: 20px;
         width: 95%;
-        margin-left: 2.5%;
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content: space-around;
+        justify-content: space-evenly;
     }
 
     .card {
-        margin: 10px;
-        width: 350px;
-        height: 350px;
-        flex: 0 1 350px;
+        width: 42.5%;
+        height: 150px;
     }
 
+    #fourthCard {
+        width: 90%;
+    }
 }
 
 /* 992px for desktop and laptops */
@@ -200,28 +204,70 @@ h3 {
         flex-direction: column;
         width: 25%;
         float: left;
-        height: auto;
+        height: 100%;
         margin-right: 3%;
         align-items: center;
     }
 
     table {
         width: 65%;
-
+        height: 50px;
     }
 
     .places-interest {
         flex-direction: row;
+        justify-content: space-evenly;
+        height: 430px;
     }
 
     section {
+        margin-top: 3%;
+        margin-bottom: 3%;
+        width: 65%;
         background-color: pink;
         display: flex;
         flex-direction: column;
+        justify-content: space-evenly;
+        border: 1px solid black;
+        border-radius: 10px;
     }
 
     section > h3 {
         display: inline-block;
+    }
+
+    .card {
+        width: 30%;
+        height: 180px;
+        
+    }
+
+    #fourthCard {
+        width: 62.5%;
+    }
+
+    .currency-converter {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        height: 200px;
+    }
+    
+    .flight-seeker {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        height: 300px;
+    }
+
+    .calculator {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        height: 200px;
     }
   }
 
