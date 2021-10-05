@@ -5,7 +5,8 @@ body {
 }
 
 header {
-    width: 100%;
+    width: 90%;
+    margin: 0 auto;
     background-color: chartreuse;
     text-align: center;
     margin-bottom: 20px;
@@ -99,12 +100,29 @@ th, td {
 .errorPage {
     height: 90%;
     width: 60%;
-    margin: 5%;
+    margin: 5% auto;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    text-align: center;
 }
 
 .hidden {
     display: none;
 }
 
+@media screen and (min-width: 768px) {
+    .currency-converter {
+        width: 42.5%;
+    }
+
+    .flight-seeker {
+        width: 42.5%;
+    }
+
+    .finder-col {
+        display: inline-flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
