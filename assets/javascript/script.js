@@ -114,9 +114,13 @@ async function getQuotes() {
     //Getting all carriers available
     if (data.Carriers.length == 0) {
       console.log('error')
+      flightDisplay.attr('class', 'hidden')
+      $errorPage.attr('class', 'errorPage')
+      $('#errorCode').text('there are no available flight for these designated dates and destinations')
     } else {
     for(var i=0; i<data.Carriers.length; i++){
       //Display Carrier name
+      console.log(data.Carriers.length)
       var $carrier = $("<p>");
       $carrier.css("display","block");
       $carrier.addClass("carrier-option");
