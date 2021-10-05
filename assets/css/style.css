@@ -1,30 +1,36 @@
 
 body {
-    background-color: cadetblue;
+    /*background-color: cadetblue; */
     font-family: 'Poppins', sans-serif;
+    background-image: url('../../pictures/waterlong.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 header {
     width: 100%;
-    background-color: chartreuse;
     text-align: center;
     margin-bottom: 20px;
 }
 
 h1 {
-    font-size: xx-large;
+    display: inline-block;
+    font-size: 700;
     margin-top: 10px;
+    color: whitesmoke;
+    background-color: teal;
+    border-radius: 10px;
 }
 
 .finder-col {
     display: flex;
     flex-direction: column;
-    background-color: whitesmoke;
     text-align: center;
     width: 90%;
     margin-left: 5%;
     border-radius: 10px;
     border: 3px black solid;
+    opacity: 90%;
 }
 
 h2 {
@@ -33,7 +39,6 @@ h2 {
 }
 
 .currency-converter {
-    background-color: wheat;
     width: 90%;
     margin-left: 5%;
     margin-top: 10px;
@@ -45,7 +50,6 @@ h2 {
 }
 
 .flight-seeker {
-    background-color: turquoise;
     width: 90%;
     margin-left: 5%;
     margin-top: 10px;
@@ -61,7 +65,6 @@ h2 {
 }
 
 .calculator {
-    background-color: tomato;
     width: 90%;
     margin-left: 5%;
     margin-top: 10px;
@@ -74,7 +77,7 @@ h2 {
 
 .total-cost {
     margin-top: 10px;
-    border: 2px black solid;
+    background-color: bisque;
     width: 50%;
     margin-left: 25%;
 }
