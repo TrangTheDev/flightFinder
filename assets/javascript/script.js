@@ -102,10 +102,19 @@ async function getQuotes() {
     }
   })
   .then(function(response){
-    return response.json();
+    if (response.ok) {
+      return response.json();
+    } else {
+      flightDisplay.attr('class', 'hidden')
+      $errorPage.attr('class', 'errorPage')
+      $('#errorCode').text(response.status + '--there may be issues with your search options please double check them and try again to see flight details')
+    }
   })
    .then(function(data){
     //Getting all carriers available
+    if (data.Carriers.length == 0) {
+      console.log('error')
+    } else {
     for(var i=0; i<data.Carriers.length; i++){
       //Display Carrier name
       var $carrier = $("<li>");
@@ -128,7 +137,7 @@ async function getQuotes() {
       $price.addClass("flight-price");
       $price.text(data.Currencies[0].Code + data.Currencies[0].Symbol + data.Quotes[i].MinPrice);
       $priceList.append($price);
-    }
+    }}
   })
 }
 
