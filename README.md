@@ -65,6 +65,8 @@ We used Zoom to communicate and when we had class time we were able to assist ea
 
 ![flightFinder](take2.PNG)
 
+**Deployed Webpage Link:** https://trangthedev.github.io/flightFinder/
+
 
 **Final presentation**
 

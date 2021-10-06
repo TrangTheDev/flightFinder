@@ -344,6 +344,10 @@ async function pastSearch() {
   var destinationCityRequest = placeList + destinationCity;
   var departureDate = save[i].departureDate
   var returnDate = save[i].returnDate
+  $destination.val(destinationCity);
+  $origin.val(originCity);
+  $departureDate.val(departureDate)
+  $returnDate.val(returnDate) 
 
   await getOriginCityId(originCityRequest);
   await getDestinationCityId(destinationCityRequest);
@@ -401,6 +405,7 @@ async function pastSearch() {
       calculateCosts();
       //display origin, destinatiopn andf date on screen (by appending variables to the container)
       }
+      getLatLon()
     }
   })
 }
