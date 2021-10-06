@@ -150,7 +150,10 @@ async function getQuotes() {
 submitBtn.on('click', storeLocalStorage)
 
 function getLocalStorage() {
-  
+  let i = (localStorage.length)/4;
+  for (i = ((localStorage.length)/4); i > ((localStorage.length/4)-3); i--){
+    
+  }
 }
 
 function storeLocalStorage() {
