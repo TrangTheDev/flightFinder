@@ -61,6 +61,7 @@ var $departureDate = $("#fromDate");
 var $returnDate = $("#toDate");
 var flightDisplay = $('#flightDisplay')
 var $errorPage = $('#errorPage')
+var submitBtn = $('#calcSubmitBtn')
 
 
 var originCityID;
@@ -140,9 +141,26 @@ async function getQuotes() {
       $priceList.append($("<br>"));
       cheapestPrice = data.Quotes[0].MinPrice;
       calculateCosts();
+      storeLocalStorage();
       }}
     })
   }
+
+submitBtn.on('click', storeLocalStorage)
+
+function getLocalStorage() {
+  
+}
+
+function storeLocalStorage() {
+  let i = (localStorage.length/4)
+  localStorage.setItem('toDestination' + i, $destination.val())
+  localStorage.setItem('fromDestination' + i, $origin.val())
+  localStorage.setItem('fromDate' + i, $departureDate.val())
+  localStorage.setItem('toDate' + i, $returnDate.val())
+  getLocalStorage()
+  }
+
 
 async function getOriginCityId(originCityRequest){
 
@@ -202,7 +220,6 @@ $findButton.on('click', function errorReset() {
 
 
 // calculator 
-var submitBtn = $('#calcSubmitBtn')
 submitBtn.on('click', calculateCosts)
 
 function calculateCosts() {
