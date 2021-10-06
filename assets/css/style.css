@@ -155,6 +155,22 @@ h2 {
     text-align: center;
 }
 
+.pastSearches {
+    width: 90%;
+    height: 200px;
+    margin-bottom: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 3px solid black;
+}
+
+.pastSearchesList {
+    width: 75%;
+    height: 80%;
+    background-color: black;
+}
+
 table {
     text-align: center;
     margin-left: 5%;
@@ -356,31 +372,8 @@ section {
         width: 62.5%;
     }
 
-    .currency-converter {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: center;
-        height: 200px;
-    }
-    
-    .flight-seeker {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: center;
-        height: 300px;
-    }
-
-    .calculator {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        height: 200px;
-    }
-
     .total-cost {
-        width: 75%;
+        width: 80%;
         display: flex;
         justify-content: center;
     }
