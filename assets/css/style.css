@@ -11,6 +11,7 @@ i {
     margin-left: 10px;
 }
 
+/*Project Title styling*/
 header {
     width: 100%;
     text-align: center;
@@ -24,6 +25,7 @@ header {
     box-shadow: 1px 1px inset;
 }
 
+/*title styling*/
 h1 {
     display: inline-block;
     font-weight: 700;
@@ -35,6 +37,7 @@ h1 {
     background: rgba(255, 255, 255, 0.8) ;
 }
 
+/*aside container style start*/
 .finder-col {
     display: flex;
     flex-direction: column;
@@ -46,11 +49,15 @@ h1 {
     background: rgba(0, 0, 0, 0.15)
 }
 
+/*Hedaing of currency converter styling*/
 h2 {
     font-size: larger;
     margin-bottom: 10px;
+    color: #130f40;
+
 }
 
+/*Currency converter includes all divs and heading*/
 .currency-converter {
     width: 90%;
     margin-left: 5%;
@@ -84,7 +91,11 @@ h2 {
 .currency-converter > div {
     margin-top: 5px;
 }
+.currency{
+    cursor:pointer;
+}
 
+/*middle div of aside styling*/
 .flight-seeker {
     width: 90%;
     margin-left: 5%;
@@ -100,13 +111,11 @@ h2 {
     margin-top: 5px;
 }
 /*More effects*/
-.currency{
-    cursor:pointer;
-}
+
 .button, #calcSubmitBtn{
     border:none;
     color:white;
-    background-color: rgb(128, 0, 0);
+    background-color: #f0932b;
     height: 30px;
     border-radius:4px;
     box-shadow: inset 0 0 0 0 #f9e506;
@@ -398,11 +407,11 @@ section {
     }
     
     .button {
-        width: fit-content;
+        width: 50%;
         margin: 0 auto;
     }
 
-    .part2, .part3 {
+    h2, .part2, .part3 {
         color: white;
     }
   }
