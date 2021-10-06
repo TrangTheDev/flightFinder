@@ -24,7 +24,7 @@ Once the team decided on the project idea, we created a wireframe and created a 
 
 **Wireframe**
 
-![flightFinder](flightFinder.png)
+![flightFinder](./pictures/flightFinder.png)
 
 
 **APIs used for project**
