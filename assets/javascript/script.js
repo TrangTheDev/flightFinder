@@ -146,9 +146,9 @@ async function getQuotes() {
       calculateCosts();
 
       //display origin, destinatiopn andf date on screen (by appending variables to the container)
-
+      }
       storeLocalStorage();
-      }}
+    }
     })
   }
 
