@@ -158,10 +158,9 @@ function displayLocalStorage() {
 var save = JSON.parse(localStorage.getItem('change'))
   console.log(save)
   for(var i=0; i<save.length;i++){
-    var addItem = $('<li> <button> ' + save[i].origin + ' to ' + save[i].destination + '</button> </li>')
+    var addItem = $('<li> <button class="pastBtn"> ' + save[i].origin + ' to ' + save[i].destination + '</button> </li>')
     $pastSearchesList.append(addItem)
   }
-  
 }
 function storeLocalStorage() {
   var object = {
