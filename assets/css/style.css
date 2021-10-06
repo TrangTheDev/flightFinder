@@ -27,6 +27,8 @@ h1 {
     color: #130f40;
     border-radius: 10px;
     font-size: xx-large;
+    padding: 1%;
+    background: rgba(255, 255, 255, 0.8) ;
 }
 
 .finder-col {
@@ -199,7 +201,7 @@ section {
 
 .card {
     border: 3px solid black;
-    background-color: rgb(54, 54, 54);
+    background-color: #363636;
     color: whitesmoke;
     width: 90%;
     margin-bottom: 4%;
@@ -306,7 +308,6 @@ section {
         margin-bottom: 3%;
         margin-left: 0;
         width: 65%;
-        background-color: #f0932b;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
