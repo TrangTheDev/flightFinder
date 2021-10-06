@@ -2,7 +2,7 @@
 body {
     /*background-color: cadetblue; */
     font-family: 'Poppins', sans-serif;
-    background-image: url('../../pictures/waterlong.jpg');
+    background-image: url('../pictures/waterlong.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
