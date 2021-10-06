@@ -7,6 +7,10 @@ body {
     background-size: cover;
 }
 
+i {
+    margin-left: 10px;
+}
+
 header {
     width: 100%;
     text-align: center;
