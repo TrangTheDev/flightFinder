@@ -3,7 +3,7 @@
 var select = document.querySelectorAll('.currency');
 var number = document.getElementById("number");
 var output = document.getElementById("output");
-
+var $errorSection = $('#errorSection')
 
 //fetching the URL from franfurter app and getting json data
 fetch('https://api.frankfurter.app/currencies').then((data) => data.json())
@@ -26,9 +26,10 @@ function updatevalue() {
   var currency2 = select[1].value;
   var value = number.value; //number ia a global variable and this value will be store in fetch URL to get the data
   if (currency1 != currency2) { 
+    $errorSection.attr('class', 'hidden')
     convert(currency1, currency2, value); 
   } else {
-      alert("Choose Different Currency");
+      $errorSection.attr('class', 'currencyError')
     }
 }
 function convert(currency1, currency2, value) {

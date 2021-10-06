@@ -54,6 +54,29 @@ h2 {
     text-align: center;
 }
 
+.currencyError {
+    display: flex;
+    justify-content: center;
+    width: 75%;
+}
+
+#currencyError {
+    border:none;
+    color:white;
+    background-color: rgb(128, 0, 0);
+    height: 30px;
+    border-radius:4px;
+    box-shadow: inset 0 0 0 0 #f9e506;
+    transition:ease-out 0.3s;
+    width:100%;
+}
+
+#currencyError:hover{
+    box-shadow: inset 300px 0 0 0 #f9e506;
+    color:#000;
+}
+
+
 .currency-converter > div {
     margin-top: 5px;
 }
