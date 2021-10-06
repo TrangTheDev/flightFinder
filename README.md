@@ -68,7 +68,7 @@ We used Zoom to communicate and when we had class time we were able to assist ea
 
 **Final presentation**
 
-**URL:** 
+**URL:** https://docs.google.com/presentation/d/1NZ2yRj-iDHwmwE-f3eKFsq03-Q-l-IuRCK6_0a_k6hw/edit#slide=id.p
 
 *Note*: for presentation we will use any from destination to Sydney to show places of interest and available flights.
 
