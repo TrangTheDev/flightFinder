@@ -1,8 +1,8 @@
 //Currency converter script start
 //declaring the variables
 var select = document.querySelectorAll('.currency');
-var number = document.getElementById("number");
-var output = document.getElementById("output");
+var number = $("#number");
+var output = $("#output");
 var $errorSection = $('#errorSection')
 
 //fetching the URL from franfurter app and getting json data
@@ -24,7 +24,7 @@ function display(data) {
 function updatevalue() {
   var currency1 = select[0].value; //putting select enteries in currency1 and value will be stored in fetch URL to get the data
   var currency2 = select[1].value;
-  var value = number.value; //number ia a global variable and this value will be store in fetch URL to get the data
+  var value = number.val(); //number ia a global variable and this value will be store in fetch URL to get the data
   if (currency1 != currency2) { 
     $errorSection.attr('class', 'hidden')
     convert(currency1, currency2, value); 
@@ -37,7 +37,7 @@ function convert(currency1, currency2, value) {
   fetch(`https://${host}/latest?amount=${value}&from=${currency1}&to=${currency2}`) //host, amount, from and to keywords are used
     .then((val) => val.json())
     .then((val) => {
-      output.value = Object.values(val.rates)[0]; //gloabl variable output is disabled already in index
+      output.val(Object.values(val.rates)[0]); //gloabl variable output is disabled already in index
   });
 }
 //currency converter script end
