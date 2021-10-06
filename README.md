@@ -61,16 +61,14 @@ We used Zoom to communicate and when we had class time we were able to assist ea
 
 **The evolution of Flight Finder**
 
-![flightFinder](take1.png) 
+![flightFinder](./pictures/take1.png) 
 
-![flightFinder](take2.PNG)
+![flightFinder](./pictures/take2.PNG)
 
 **Deployed Webpage Link:** https://trangthedev.github.io/flightFinder/
 
 
-**Final presentation**
-
-**URL:** https://docs.google.com/presentation/d/1NZ2yRj-iDHwmwE-f3eKFsq03-Q-l-IuRCK6_0a_k6hw/edit#slide=id.p
+**Final presentation URL:** https://docs.google.com/presentation/d/1NZ2yRj-iDHwmwE-f3eKFsq03-Q-l-IuRCK6_0a_k6hw/edit#slide=id.p
 
 *Note*: for presentation we will use Sydney as a placeholder for places of interest when nothing else has loaded.
 
