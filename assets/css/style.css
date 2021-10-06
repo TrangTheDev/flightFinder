@@ -29,6 +29,8 @@ h1 {
     color: #130f40;
     border-radius: 10px;
     font-size: xx-large;
+    padding: 1%;
+    background: rgba(255, 255, 255, 0.8) ;
 }
 
 /*aside container style start*/
@@ -58,6 +60,29 @@ h2 {
     margin-top: 10px;
     text-align: center;
 }
+
+.currencyError {
+    display: flex;
+    justify-content: center;
+    width: 75%;
+}
+
+#currencyError {
+    border:none;
+    color:white;
+    background-color: rgb(128, 0, 0);
+    height: 30px;
+    border-radius:4px;
+    box-shadow: inset 0 0 0 0 #f9e506;
+    transition:ease-out 0.3s;
+    width:100%;
+}
+
+#currencyError:hover{
+    box-shadow: inset 300px 0 0 0 #f9e506;
+    color:#000;
+}
+
 
 .currency-converter > div {
     margin-top: 5px;
@@ -127,9 +152,8 @@ h2 {
 }
 
 .total-cost {
-    margin-top: 10px;
     width: 50%;
-    margin-left: 25%;
+    margin: 0 auto;
     margin-top: 5px;
     margin-bottom: 8px;
     width:50%;
@@ -208,7 +232,7 @@ section {
 
 .card {
     border: 3px solid black;
-    background-color: rgb(54, 54, 54);
+    background-color: #363636;
     color: whitesmoke;
     width: 90%;
     margin-bottom: 4%;
@@ -265,7 +289,7 @@ section {
     }
 
     h3 {
-        font-size: xx-large;
+        font-size: x-large;
     }
 
     .places-interest {
@@ -297,6 +321,7 @@ section {
         height: 100%;
         margin-right: 3%;
         align-items: center;
+        margin-bottom: 2%;
     }
 
     table {
@@ -315,13 +340,13 @@ section {
         margin-bottom: 3%;
         margin-left: 0;
         width: 65%;
-        background-color: #f0932b;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
         border: 3px solid black;
         border-radius: 10px;
         background: rgb(240, 147, 43, 0.8) ;
+        /* background: rgb(128, 0, 0, 0.8); */
     }
 
     section > h3 {
@@ -331,7 +356,9 @@ section {
     .card {
         width: 30%;
         height: 180px;
-        
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     #fourthCard {
@@ -361,9 +388,18 @@ section {
         height: 200px;
     }
 
+    .total-cost {
+        width: 75%;
+        display: flex;
+        justify-content: center;
+    }
+
     ul {
-        width: 100%;
+        width: 80%;
         height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     
     .button {

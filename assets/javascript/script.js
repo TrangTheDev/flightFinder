@@ -3,7 +3,7 @@
 var select = document.querySelectorAll('.currency');
 var number = document.getElementById("number");
 var output = document.getElementById("output");
-
+var $errorSection = $('#errorSection')
 
 //fetching the URL from franfurter app and getting json data
 fetch('https://api.frankfurter.app/currencies').then((data) => data.json())
@@ -26,17 +26,18 @@ function updatevalue() {
   var currency2 = select[1].value;
   var value = number.value; //number ia a global variable and this value will be store in fetch URL to get the data
   if (currency1 != currency2) { 
+    $errorSection.attr('class', 'hidden')
     convert(currency1, currency2, value); 
   } else {
-      alert("Choose Different Currency");
+      $errorSection.attr('class', 'currencyError')
     }
 }
 function convert(currency1, currency2, value) {
   const host = "api.frankfurter.app";   //site name
   fetch(`https://${host}/latest?amount=${value}&from=${currency1}&to=${currency2}`) //host, amount, from and to keywords are used
     .then((val) => val.json())
-    .then((val) => {                                                                 //like Amount, aud Base AUD, date, rate
-      output.value = Object.values(val.rates)[0]; //object has a property rates like {INR,27000}, gloabl variable output is disabled already in index
+    .then((val) => {
+      output.value = Object.values(val.rates)[0]; //gloabl variable output is disabled already in index
   });
 }
 //currency converter script end
@@ -108,14 +109,12 @@ async function getQuotes() {
    .then(function(data){
     //Getting all carriers available
     if (data.Carriers.length == 0) {
-      console.log('error')
       flightDisplay.attr('class', 'hidden')
       $errorPage.attr('class', 'errorPage')
       $('#errorCode').text('there are no available flight for these designated dates and destinations')
     } else {
     for(var i=0; i<data.Carriers.length; i++){
       //Display Carrier name
-      console.log(data.Carriers.length)
       var $carrier = $("<p>");
       $carrier.css("display","block");
       $carrier.addClass("carrier-option");
@@ -140,7 +139,6 @@ async function getQuotes() {
       $priceList.append($price);
       $priceList.append($("<br>"));
       cheapestPrice = data.Quotes[0].MinPrice;
-      console.log(cheapestPrice);
       calculateCosts();
       }}
     })
@@ -159,7 +157,6 @@ async function getOriginCityId(originCityRequest){
   var data = await response.json();
   originCityID = data.Places[0].PlaceId;
   } else {
-    console.log("error: at rapidHost api Destination City" + response.status)
     flightDisplay.attr('class', 'hidden')
     $errorPage.attr('class', 'errorPage')
     $('#errorCode').text(response.status)
@@ -178,7 +175,6 @@ async function getDestinationCityId(destinationCityRequest){
   var data = await response.json();
   destinationCityID = data.Places[0].PlaceId
   } else {
-    console.log("error: at rapidHost api Destination City" + response.status)
     flightDisplay.attr('class', 'hidden')
     $errorPage.attr('class', 'errorPage')
     $('#errorCode').text(response.status + '--there may be issues with your search options please double check them and try again to see flight details')
@@ -246,7 +242,6 @@ function getLatLon() {
             if (response.ok) {
               response.json()
               .then(function(data) {
-                console.log(data)
                 for(i = 0; i < 5; i++) {
                   var activityName = $('.activityName' + i)
                   var activityType = $('.activityType' + i)
@@ -263,7 +258,6 @@ function getLatLon() {
           })
         })
       } else {
-        console.log("error: with openweatherorg likely issue with destination input" + response.status)
         flightDisplay.attr('class', 'hidden')
         $errorPage.attr('class', 'errorPage')
         $('#errorCode').text(response.status)
