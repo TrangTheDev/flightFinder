@@ -258,7 +258,7 @@ section {
     }
 
     h3 {
-        font-size: xx-large;
+        font-size: x-large;
     }
 
     .places-interest {
@@ -290,6 +290,7 @@ section {
         height: 100%;
         margin-right: 3%;
         align-items: center;
+        margin-bottom: 2%;
     }
 
     table {
@@ -314,6 +315,7 @@ section {
         border: 3px solid black;
         border-radius: 10px;
         background: rgb(240, 147, 43, 0.8) ;
+        /* background: rgb(128, 0, 0, 0.8); */
     }
 
     section > h3 {
