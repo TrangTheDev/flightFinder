@@ -183,8 +183,10 @@ h2 {
     background-color: white;
     color: white;
     border-color: black;
-    
-    
+}
+
+#lastSearch {
+    color: white;
 }
 
 .pastSearches ul {

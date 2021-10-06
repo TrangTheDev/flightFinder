@@ -65,6 +65,7 @@ var $errorPage = $('#errorPage');
 var submitBtn = $('#calcSubmitBtn');
 var $pastSearchesList = $('#pastSearchesList');
 var localStorageArray = [];
+var $pastBtn = $('.pastBtn')
 
 var originCityID;
 var destinationCityID;
@@ -157,7 +158,8 @@ function displayLocalStorage() {
   // loads everything that is in local storage at the beginning, when page is loading
 var save = JSON.parse(localStorage.getItem('change'))
   console.log(save)
-  for(var i=0; i<save.length;i++){
+  $pastSearchesList.text('')
+  for(var i=save.length-1; i<save.length;i++){
     var addItem = $('<li> <button class="pastBtn"> ' + save[i].origin + ' to ' + save[i].destination + '</button> </li>')
     $pastSearchesList.append(addItem)
   }
@@ -173,6 +175,7 @@ function storeLocalStorage() {
   localStorage.setItem('change', JSON.stringify(localStorageArray))
   displayLocalStorage()
   }
+
 
 
 async function getOriginCityId(originCityRequest){
