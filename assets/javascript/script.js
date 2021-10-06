@@ -153,14 +153,12 @@ async function getQuotes() {
     })
   }
 
-
 function displayLocalStorage() {
   // loads everything that is in local storage at the beginning, when page is loading
 var save = JSON.parse(localStorage.getItem('change'))
-  console.log(save)
   $pastSearchesList.text('')
   for(var i=save.length-1; i<save.length;i++){
-    var addItem = $('<li> <button class="pastBtn"> ' + save[i].origin + ' to ' + save[i].destination + '</button> </li>')
+    var addItem = $('<li> <button id="pastBtn"> ' + save[i].origin + ' to ' + save[i].destination + '</button> </li>')
     $pastSearchesList.append(addItem)
   }
 }
@@ -175,8 +173,6 @@ function storeLocalStorage() {
   localStorage.setItem('change', JSON.stringify(localStorageArray))
   displayLocalStorage()
   }
-
-
 
 async function getOriginCityId(originCityRequest){
         //Display flight time
@@ -328,4 +324,83 @@ function getLatLon() {
       }
     })
   }
-  displayLocalStorage()
+displayLocalStorage()
+
+var $pastBtn = $('#pastBtn')
+$pastBtn.on('click', pastSearch)
+
+
+// when someone reloads a page and presses the last search button they get those results
+async function pastSearch() {
+  clearTable();
+  clearCalculator();
+
+  //Get inputs from user
+  var save = JSON.parse(localStorage.getItem('change'))
+  let i = save.length-1;
+  var originCity = save[i].origin.charAt(0).toUpperCase() + save[i].origin.slice(1);
+  var destinationCity = save[i].destination.charAt(0).toUpperCase() + save[i].destination.slice(1);
+  var originCityRequest = placeList + originCity;
+  var destinationCityRequest = placeList + destinationCity;
+  var departureDate = save[i].departureDate
+  var returnDate = save[i].returnDate
+
+  await getOriginCityId(originCityRequest);
+  await getDestinationCityId(destinationCityRequest);
+
+  var requestQuote = curlQuotes + originCityID + "/" + destinationCityID + "/" + departureDate + "?inboundpartialdate=" + returnDate;
+
+  fetch(requestQuote, {
+    "headers": {
+      "x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
+      "x-rapidapi-key": "6fbd183997msh60b69efce9d0b37p193b51jsn4d762a8a5370"
+    }
+  })
+  .then(function(response){
+    if (response.ok) {
+      return response.json();
+    } else {
+      flightDisplay.attr('class', 'hidden')
+      $errorPage.attr('class', 'errorPage')
+      $('#errorCode').text(response.status + '--there may be issues with your search options please double check them and try again to see flight details')
+    }
+  })
+  .then(function(data){
+    //Getting all carriers available
+    if (data.Carriers.length == 0) {
+      flightDisplay.attr('class', 'hidden')
+      $errorPage.attr('class', 'errorPage')
+      $('#errorCode').text('there are no available flight for these designated dates and destinations')
+    }else {
+      for(var i=0; i<data.Carriers.length; i++){
+        //Display Carrier name
+        var $carrier = $("<p>");
+        $carrier.css("display","block");
+        $carrier.addClass("carrier-option");
+        $carrier.text(data.Carriers[i].Name);
+        $carrierList.append($carrier);
+        $carrierList.append($("<br>"));
+
+      //Display flight time
+      var $departureTime = $("<p>");
+      $departureTime.css("display","block");
+      $departureTime.addClass("flight-time");
+      var flightTime = data.Quotes[i].OutboundLeg.DepartureDate.slice(0,10);
+      $departureTime.text(flightTime);
+      $flightTimes.append($departureTime);
+      $flightTimes.append($("<br>"));
+  
+      //Display price
+      var $price = $("<p>");
+      $price.css("display","block");
+      $price.addClass("flight-price");
+      $price.text(data.Currencies[0].Code + data.Currencies[0].Symbol + data.Quotes[i].MinPrice);
+      $priceList.append($price);
+      $priceList.append($("<br>"));
+      cheapestPrice = data.Quotes[0].MinPrice;
+      calculateCosts();
+      //display origin, destinatiopn andf date on screen (by appending variables to the container)
+      }
+    }
+  })
+}
