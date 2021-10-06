@@ -62,6 +62,7 @@ var $departureDate = $("#fromDate");
 var $returnDate = $("#toDate");
 var flightDisplay = $('#flightDisplay')
 var $errorPage = $('#errorPage')
+var submitBtn = $('#calcSubmitBtn')
 
 var originCityID;
 var destinationCityID;
@@ -123,6 +124,46 @@ async function getQuotes() {
         $carrierList.append($carrier);
         $carrierList.append($("<br>"));
 
+      //Display flight time
+      var $departureTime = $("<p>");
+      $departureTime.css("display","block");
+      $departureTime.addClass("flight-time");
+      var flightTime = data.Quotes[i].OutboundLeg.DepartureDate.slice(0,10);
+      $departureTime.text(flightTime);
+      $flightTimes.append($departureTime);
+      $flightTimes.append($("<br>"));
+  
+      //Display price
+      var $price = $("<p>");
+      $price.css("display","block");
+      $price.addClass("flight-price");
+      $price.text(data.Currencies[0].Code + data.Currencies[0].Symbol + data.Quotes[i].MinPrice);
+      $priceList.append($price);
+      $priceList.append($("<br>"));
+      cheapestPrice = data.Quotes[0].MinPrice;
+      calculateCosts();
+      storeLocalStorage();
+      }}
+    })
+  }
+
+submitBtn.on('click', storeLocalStorage)
+
+function getLocalStorage() {
+  
+}
+
+function storeLocalStorage() {
+  let i = (localStorage.length/4)
+  localStorage.setItem('toDestination' + i, $destination.val())
+  localStorage.setItem('fromDestination' + i, $origin.val())
+  localStorage.setItem('fromDate' + i, $departureDate.val())
+  localStorage.setItem('toDate' + i, $returnDate.val())
+  getLocalStorage()
+  }
+
+
+async function getOriginCityId(originCityRequest){
         //Display flight time
         var $departureTime = $("<p>");
         $departureTime.css("display","block");
@@ -141,9 +182,7 @@ async function getQuotes() {
         $priceList.append($("<br>"));
         cheapestPrice = data.Quotes[0].MinPrice;
       } 
-    }
-  })
-}
+
 
 async function getOriginCityId(originCityRequest){ //Function to get airport for origin city
 
