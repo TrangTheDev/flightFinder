@@ -11,7 +11,7 @@ fetch('https://api.frankfurter.app/currencies').then((data) => data.json())
     display(data);
   });
 
-//function to select the entries from API like AUD:Australia and putting in select variable and making its option
+//function to select the entries from API like entries[0]=AUD[0][0]:Australia Dollor[0][1], entry[1]=  and putting in select variable and making its option eg. we select the currency in two selectors
 function display(data) {
   var entries = Object.entries(data);
     for (var i = 0; i < entries.length; i++) {
@@ -42,7 +42,7 @@ function convert(currency1, currency2, value) {
 }
 //currency converter script end
 
-//   date picker Jquery Ui Added but needs styling
+//   date picker Jquery Ui Added
   $( function() {
     $( "#toDate" ).datepicker({ dateFormat: 'yy-mm-dd' });
   } );
@@ -50,9 +50,6 @@ function convert(currency1, currency2, value) {
   $( function() {
     $( "#fromDate" ).datepicker({ dateFormat: 'yy-mm-dd' });
   } );
-
-
-
 
 var $carrierList = $(".carrier");
 var $flightTimes = $(".time");

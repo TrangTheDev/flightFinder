@@ -52,12 +52,12 @@
             <h2 class="part2">Book Flights</h2>
             <div class="inbox full">
                 <span><i class="fas fa-plane-departure"></i></span>
-                <input type="text" class="placeSelectionInput" placeholder="To Destination" id="toDestination" />
-            </div>
-            <div class="inbox full">
-                <span><i class="fas fa-plane-arrival"></i></span>
                 <input type="text" class="placeSelectionInput" placeholder="From Destination" id="fromDestination" />
             </div>
+            <div class="inbox full">                
+                <span><i class="fas fa-plane-arrival"></i></span>
+                <input type="text" class="placeSelectionInput" placeholder="To Destination" id="toDestination" />
+            </div>            
             <div class="inbox full">
                 <span><i class="fas fa-calendar-alt"></i></span>
                 <input type="text" class="placeSelectionInput" placeholder="From Date" id="fromDate" />
@@ -107,7 +107,7 @@
     <div class='hidden' id="errorPage">
         <h2> Error Code: <span id="errorCode"></span></h2>
     </div>
-
+    <!--flight display start-->
     <table class="flight-display" id="flightDisplay">
         <thead>
             <tr>
@@ -124,7 +124,8 @@
             </tr>
         </tbody>
     </table>
-
+    <!--fight display end-->
+    <!--Places of interest section start-->
     <section>
         <h3>Places of Interest!</h3>
         <div class="places-interest">
@@ -175,6 +176,7 @@
                 </div>
         </div>
     </section>
+    <!--places of interset section end-->
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
