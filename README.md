@@ -61,9 +61,9 @@ We used Zoom to communicate and when we had class time we were able to assist ea
 
 **The evolution of Flight Finder**
 
-![flightFinder](./pictures/take1.png) 
+![flightFinder](./assets/pictures/take1.png) 
 
-![flightFinder](./pictures/take2.PNG)
+![flightFinder](./assets/pictures/take2.PNG)
 
 **Deployed Webpage Link:** https://trangthedev.github.io/flightFinder/
 
