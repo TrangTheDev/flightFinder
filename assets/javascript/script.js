@@ -60,9 +60,11 @@ var $origin = $("#fromDestination");
 var $findButton = $("#flight-button");
 var $departureDate = $("#fromDate");
 var $returnDate = $("#toDate");
-var flightDisplay = $('#flightDisplay')
-var $errorPage = $('#errorPage')
-var submitBtn = $('#calcSubmitBtn')
+var flightDisplay = $('#flightDisplay');
+var $errorPage = $('#errorPage');
+var submitBtn = $('#calcSubmitBtn');
+var $pastSearchesList = $('#pastSearchesList');
+var localStorageArray = [];
 
 var originCityID;
 var destinationCityID;
@@ -142,27 +144,35 @@ async function getQuotes() {
       $priceList.append($("<br>"));
       cheapestPrice = data.Quotes[0].MinPrice;
       calculateCosts();
+
+      //display origin, destinatiopn andf date on screen (by appending variables to the container)
+
       storeLocalStorage();
       }}
     })
   }
 
-submitBtn.on('click', storeLocalStorage)
 
-function getLocalStorage() {
-  let i = (localStorage.length)/4;
-  for (i = ((localStorage.length)/4); i > ((localStorage.length/4)-3); i--){
-    
+function displayLocalStorage() {
+  // loads everything that is in local storage at the beginning, when page is loading
+var save = JSON.parse(localStorage.getItem('change'))
+  console.log(save)
+  for(var i=0; i<save.length;i++){
+    var addItem = $('<li> <button> ' + save[i].origin + ' to ' + save[i].destination + '</button> </li>')
+    $pastSearchesList.append(addItem)
   }
+  
 }
-
 function storeLocalStorage() {
-  let i = (localStorage.length/4)
-  localStorage.setItem('toDestination' + i, $destination.val())
-  localStorage.setItem('fromDestination' + i, $origin.val())
-  localStorage.setItem('fromDate' + i, $departureDate.val())
-  localStorage.setItem('toDate' + i, $returnDate.val())
-  getLocalStorage()
+  var object = {
+    origin : $("#fromDestination").val(),
+    destination : $("#toDestination").val(),
+    departureDate : $("#fromDate").val(),
+    returnDate : $("#toDate").val(),
+  }
+  localStorageArray.push(object)
+  localStorage.setItem('change', JSON.stringify(localStorageArray))
+  displayLocalStorage()
   }
 
 
@@ -316,4 +326,4 @@ function getLatLon() {
       }
     })
   }
- 
+  displayLocalStorage()

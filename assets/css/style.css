@@ -193,7 +193,7 @@ h2 {
 
 }
 
-.pastSearchesList {
+#pastSearchesList {
     width: 75%;
     height: 80%;
     background-color: black;
