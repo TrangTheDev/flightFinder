@@ -51,6 +51,7 @@ function convert(currency1, currency2, value) {
     $( "#fromDate" ).datepicker({ dateFormat: 'yy-mm-dd' });
   } );
 
+//Variables to use on flight API
 var $carrierList = $(".carrier");
 var $flightTimes = $(".time");
 var $priceList = $(".price");
@@ -62,7 +63,6 @@ var $returnDate = $("#toDate");
 var flightDisplay = $('#flightDisplay')
 var $errorPage = $('#errorPage')
 
-
 var originCityID;
 var destinationCityID;
 var originCityRequest;
@@ -70,7 +70,7 @@ var destinationCityRequest;
 var cheapestPrice;
 
 //SkyScanner API
-var cURL_quotes = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/AU/AUD/en-GB/";
+var curlQuotes = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/AU/AUD/en-GB/";
 var placeList = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/AU/AUD/en-GB/?query=";
 
 
@@ -78,6 +78,7 @@ async function getQuotes() {
 
   //Remove previous search
   clearTable();
+  clearCalculator();
 
   //Get inputs from user
   var originCity = $origin.val().charAt(0).toUpperCase() + $origin.val().slice(1);
@@ -89,7 +90,7 @@ async function getQuotes() {
   await getOriginCityId(originCityRequest);
   await getDestinationCityId(destinationCityRequest);
 
-  var requestQuote = cURL_quotes + originCityID + "/" + destinationCityID + "/" + $departureDate.val() + "?inboundpartialdate=" + $returnDate.val();
+  var requestQuote = curlQuotes + originCityID + "/" + destinationCityID + "/" + $departureDate.val() + "?inboundpartialdate=" + $returnDate.val();
 
   fetch(requestQuote, {
     "headers": {
@@ -106,45 +107,45 @@ async function getQuotes() {
       $('#errorCode').text(response.status + '--there may be issues with your search options please double check them and try again to see flight details')
     }
   })
-   .then(function(data){
+  .then(function(data){
     //Getting all carriers available
     if (data.Carriers.length == 0) {
       flightDisplay.attr('class', 'hidden')
       $errorPage.attr('class', 'errorPage')
       $('#errorCode').text('there are no available flight for these designated dates and destinations')
-    } else {
-    for(var i=0; i<data.Carriers.length; i++){
-      //Display Carrier name
-      var $carrier = $("<p>");
-      $carrier.css("display","block");
-      $carrier.addClass("carrier-option");
-      $carrier.text(data.Carriers[i].Name);
-      $carrierList.append($carrier);
-      $carrierList.append($("<br>"));
+    }else {
+      for(var i=0; i<data.Carriers.length; i++){
+        //Display Carrier name
+        var $carrier = $("<p>");
+        $carrier.css("display","block");
+        $carrier.addClass("carrier-option");
+        $carrier.text(data.Carriers[i].Name);
+        $carrierList.append($carrier);
+        $carrierList.append($("<br>"));
 
-      //Display flight time
-      var $departureTime = $("<p>");
-      $departureTime.css("display","block");
-      $departureTime.addClass("flight-time");
-      var flightTime = data.Quotes[i].OutboundLeg.DepartureDate.slice(0,10);
-      $departureTime.text(flightTime);
-      $flightTimes.append($departureTime);
-      $flightTimes.append($("<br>"));
-  
-      //Display price
-      var $price = $("<p>");
-      $price.css("display","block");
-      $price.addClass("flight-price");
-      $price.text(data.Currencies[0].Code + data.Currencies[0].Symbol + data.Quotes[i].MinPrice);
-      $priceList.append($price);
-      $priceList.append($("<br>"));
-      cheapestPrice = data.Quotes[0].MinPrice;
-      calculateCosts();
-      }}
-    })
-  }
+        //Display flight time
+        var $departureTime = $("<p>");
+        $departureTime.css("display","block");
+        $departureTime.addClass("flight-time");
+        var flightTime = data.Quotes[i].OutboundLeg.DepartureDate.slice(0,10);
+        $departureTime.text(flightTime);
+        $flightTimes.append($departureTime);
+        $flightTimes.append($("<br>"));
+    
+        //Display price
+        var $price = $("<p>");
+        $price.css("display","block");
+        $price.addClass("flight-price");
+        $price.text(data.Currencies[0].Code + data.Currencies[0].Symbol + data.Quotes[i].MinPrice);
+        $priceList.append($price);
+        $priceList.append($("<br>"));
+        cheapestPrice = data.Quotes[0].MinPrice;
+      } 
+    }
+  })
+}
 
-async function getOriginCityId(originCityRequest){
+async function getOriginCityId(originCityRequest){ //Function to get airport for origin city
 
   var response = await fetch(originCityRequest, {
     "headers": {
@@ -163,7 +164,7 @@ async function getOriginCityId(originCityRequest){
   }
 }
 
-async function getDestinationCityId(destinationCityRequest){
+async function getDestinationCityId(destinationCityRequest){ //Function to get airport for destination city
   var destCity;
   var response = await fetch(destinationCityRequest, {
     "headers": {
@@ -202,19 +203,25 @@ $findButton.on('click', function errorReset() {
 
 
 // calculator 
-var submitBtn = $('#calcSubmitBtn')
-submitBtn.on('click', calculateCosts)
+
+var $totalCost = $("#totalCost");
+var submitBtnCalculateCost = $('#calcSubmitBtn')
+
+submitBtnCalculateCost.on('click', calculateCosts)
 
 function calculateCosts() {
   var flightCost = cheapestPrice;
   var peopleValue = $('#people option:selected').val()
-  var $totalCost = $('#totalCost')
   if (peopleValue != 0) {
     var $perPersonFlightCost = (flightCost)*(peopleValue)
     $totalCost.text("Total Cost= " + $perPersonFlightCost);
   } else {
     $totalCost.text('Please Select The Amount Of People Going On This Trip')
   }
+}
+
+function clearCalculator() {
+  $totalCost.text("");
 }
 
 // get latitude and lonitude for major travel options near each area
