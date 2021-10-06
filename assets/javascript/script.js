@@ -118,6 +118,7 @@ async function getQuotes() {
       $errorPage.attr('class', 'errorPage')
       $('#errorCode').text('there are no available flight for these designated dates and destinations')
     }else {
+      storeLocalStorage();
       for(var i=0; i<data.Carriers.length; i++){
         //Display Carrier name
         var $carrier = $("<p>");
@@ -148,7 +149,6 @@ async function getQuotes() {
 
       //display origin, destinatiopn andf date on screen (by appending variables to the container)
       }
-      storeLocalStorage();
     }
     })
   }
@@ -192,6 +192,7 @@ async function getOriginCityId(originCityRequest){
         $priceList.append($price);
         $priceList.append($("<br>"));
         cheapestPrice = data.Quotes[0].MinPrice;
+
       } 
 
 
@@ -376,6 +377,7 @@ async function pastSearch() {
       $errorPage.attr('class', 'errorPage')
       $('#errorCode').text('there are no available flight for these designated dates and destinations')
     }else {
+      $errorPage.attr('class', 'hidden')
       for(var i=0; i<data.Carriers.length; i++){
         //Display Carrier name
         var $carrier = $("<p>");
