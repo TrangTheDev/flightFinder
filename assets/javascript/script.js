@@ -254,14 +254,17 @@ submitBtnCalculateCost.on('click', calculateCosts)
 function calculateCosts() {
   var flightCost = cheapestPrice;
   var peopleValue = $('#people option:selected').val()
-  if (peopleValue != 0) {
+  if (peopleValue != 0 && flightCost != undefined) {
     var $perPersonFlightCost = (flightCost)*(peopleValue)
     $totalCost.text("Total Cost= " + $perPersonFlightCost);
-  } else {
-    $totalCost.text('Please Select The Amount Of People Going On This Trip')
+  } else if(peopleValue == 0){
+    $totalCost.text('Please select the amount of people going on this trip')
+  }else {
+    $totalCost.text("No flights costs found");
   }
 }
 
+//Function to clear values on calculators
 function clearCalculator() {
   $totalCost.text("");
 }
