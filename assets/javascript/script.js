@@ -11,7 +11,7 @@ fetch('https://api.frankfurter.app/currencies').then((data) => data.json())
     display(data);
   });
 
-//function to select the entries from API like AUD:Australia and putting in select variable and making its option
+//function to select the entries from API like entries[0]=AUD[0][0]:Australia Dollor[0][1], entry[1]=  and putting in select variable and making its option eg. we select the currency in two selectors
 function display(data) {
   var entries = Object.entries(data);
     for (var i = 0; i < entries.length; i++) {
@@ -35,15 +35,13 @@ function convert(currency1, currency2, value) {
   const host = "api.frankfurter.app";   //site name
   fetch(`https://${host}/latest?amount=${value}&from=${currency1}&to=${currency2}`) //host, amount, from and to keywords are used
     .then((val) => val.json())
-    .then((val) => {
-      console.log('rate', val);
-      console.log(Object.values(val.rates)[0]);  //object has a property rates
-      output.value = Object.values(val.rates)[0]; //gloabl variable output is disabled already in index
+    .then((val) => {                                                                 //like Amount, aud Base AUD, date, rate
+      output.value = Object.values(val.rates)[0]; //object has a property rates like {INR,27000}, gloabl variable output is disabled already in index
   });
 }
 //currency converter script end
 
-//   date picker Jquery Ui Added but needs styling
+//   date picker Jquery Ui Added
   $( function() {
     $( "#toDate" ).datepicker({ dateFormat: 'yy-mm-dd' });
   } );
@@ -51,9 +49,6 @@ function convert(currency1, currency2, value) {
   $( function() {
     $( "#fromDate" ).datepicker({ dateFormat: 'yy-mm-dd' });
   } );
-
-
-
 
 var $carrierList = $(".carrier");
 var $flightTimes = $(".time");
