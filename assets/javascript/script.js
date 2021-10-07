@@ -347,10 +347,10 @@ async function pastSearch() {
   var destinationCityRequest = placeList + destinationCity;
   var departureDate = save[i].departureDate
   var returnDate = save[i].returnDate
-  $destination.val(destinationCity);
-  $origin.val(originCity);
-  $departureDate.val(departureDate)
-  $returnDate.val(returnDate) 
+  $destination.val(save[i].destination.charAt(0).toUpperCase() + save[i].destination.slice(1));
+  $origin.val(save[i].origin.charAt(0).toUpperCase() + save[i].origin.slice(1));
+  $departureDate.val(save[i].departureDate)
+  $returnDate.val(save[i].returnDate) 
 
   await getOriginCityId(originCityRequest);
   await getDestinationCityId(destinationCityRequest);
