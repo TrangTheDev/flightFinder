@@ -54,11 +54,6 @@ This also included the Travel Places API, our idea was to be able to display the
 **Challenge 3 - Time constraints** - As we each work full time it was hard to get a time to work together. We were challenged as there was uncertainty on what was completed and what was outstanding at any given time. 
 We used Zoom to communicate and when we had class time we were able to assist each other.
 
-**other challenge**
-
-**other challenge**
-
-
 **The evolution of Flight Finder**
 
 ![flightFinder](./assets/pictures/take1.png) 

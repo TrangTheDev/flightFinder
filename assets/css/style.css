@@ -221,7 +221,9 @@ ul li {
     width: 100%;
 }
 
-
+#errorPage h2 {
+    color: black;
+}
 
 table {
     text-align: center;
@@ -461,11 +463,16 @@ section {
 
 /*Error page */
 .errorPage {
-    height: 90%;
+    height: 60%;
     width: 60%;
-    margin: 5%;
+    margin: 2% auto;
+    padding: 2%;
+    border: 3px solid black;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
+    background-color:rgba(255, 255, 255, 0.4);
+
 }
 
 .hidden {
